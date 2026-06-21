@@ -1,6 +1,7 @@
 services:
   - type: web
     name: mulemba-backend
+    rootDir: backend
     env: docker
     dockerfilePath: ./Dockerfile
     plan: free
