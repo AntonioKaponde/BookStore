@@ -16,7 +16,9 @@ import com.mulemba.booksells.model.User;
 import com.mulemba.booksells.model.Role;
 import com.mulemba.booksells.repository.RoleRepository;
 import com.mulemba.booksells.exception.ResourceNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AdminService {
@@ -52,14 +54,23 @@ public class AdminService {
     }
 
     public UserResponse updateUserRole(String userId, String roleName) {
+        log.info("Admin a solicitar actualização da role do utilizador {} para {}", userId, roleName);
         User user = userRepository.findById(userId)
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> {
+                    log.warn("Falha ao actualizar role: Utilizador não encontrado ({})", userId);
+                    return new ResourceNotFoundException("User not found");
+                });
         
         String targetRoleName = roleName.equalsIgnoreCase("admin") ? "ROLE_ADMIN" : "ROLE_USER";
         Role role = roleRepository.findByName(targetRoleName)
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+                .orElseThrow(() -> {
+                    log.error("Falha ao actualizar role: Role não encontrada ({})", targetRoleName);
+                    return new ResourceNotFoundException("Role not found");
+                });
                 
         user.setRoles(java.util.Set.of(role));
-        return UserResponse.from(userRepository.save(user));
+        User savedUser = userRepository.save(user);
+        log.info("Role do utilizador {} actualizada com sucesso para {}", userId, targetRoleName);
+        return UserResponse.from(savedUser);
     }
 }

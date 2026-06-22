@@ -11,6 +11,7 @@ import com.mulemba.booksells.repository.UserRepository;
 import com.mulemba.booksells.security.AuthenticatedUser;
 import com.mulemba.booksells.security.JwtService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -24,6 +25,7 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class AuthService {
@@ -35,13 +37,16 @@ public class AuthService {
 
     @Transactional
     public AuthResponse register(RegisterRequest request) {
+        log.info("Tentativa de registo iniciada para o e-mail: {}", request.email());
         if (userRepository.existsByEmail(request.email().toLowerCase().trim())) {
+            log.warn("Falha no registo: E-mail já registado ({})", request.email());
             throw new BusinessException("E-mail já registado");
         }
 
         UserType userType = request.userType() != null ? request.userType() : UserType.READER;
         if ((userType == UserType.BOOKSTORE || userType == UserType.PUBLISHER)
                 && (request.companyName() == null || request.companyName().isBlank())) {
+            log.warn("Falha no registo: Nome da empresa ausente para tipo de utilizador {}", userType);
             throw new BusinessException("Nome da empresa é obrigatório para livrarias e editoras");
         }
 
@@ -69,21 +74,29 @@ public class AuthService {
                 .build();
 
         userRepository.save(user);
+        log.info("Utilizador registado com sucesso. ID: {}, Tipo: {}", user.getId(), user.getUserType());
         return buildAuthResponse(user);
     }
 
     public AuthResponse login(LoginRequest request) {
+        log.info("Tentativa de login para o e-mail: {}", request.email());
         User user = userRepository.findByEmail(request.email().toLowerCase().trim())
-                .orElseThrow(() -> new BadCredentialsException("Credenciais inválidas"));
+                .orElseThrow(() -> {
+                    log.warn("Falha de login: Utilizador não encontrado para o e-mail ({})", request.email());
+                    return new BadCredentialsException("Credenciais inválidas");
+                });
 
         if (!user.isEnabled()) {
+            log.warn("Falha de login: Conta desactivada para o e-mail ({})", request.email());
             throw new BusinessException("Conta desactivada");
         }
 
         if (!passwordEncoder.matches(request.password(), user.getPassword())) {
+            log.warn("Falha de login: Palavra-passe incorrecta para o e-mail ({})", request.email());
             throw new BadCredentialsException("Credenciais inválidas");
         }
 
+        log.info("Login com sucesso para o utilizador: {}", user.getId());
         return buildAuthResponse(user);
     }
 
@@ -93,6 +106,7 @@ public class AuthService {
 
     @Transactional
     public UserResponse updateProfile(String userId, UpdateProfileRequest request) {
+        log.info("A actualizar o perfil do utilizador: {}", userId);
         User user = findUser(userId);
 
         if (request.name() != null && !request.name().isBlank()) user.setName(request.name().trim());
@@ -105,7 +119,9 @@ public class AuthService {
         if (request.whatsapp() != null) user.setWhatsapp(request.whatsapp());
         if (request.website() != null) user.setWebsite(request.website());
 
-        return UserResponse.from(userRepository.save(user));
+        User savedUser = userRepository.save(user);
+        log.info("Perfil do utilizador {} actualizado com sucesso", userId);
+        return UserResponse.from(savedUser);
     }
 
     private AuthResponse buildAuthResponse(User user) {

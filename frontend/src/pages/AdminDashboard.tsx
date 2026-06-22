@@ -22,6 +22,8 @@ import {
   PlusCircle,
   BarChart,
   Grid,
+  Terminal,
+  RefreshCw,
 } from 'lucide-react';
 import ModalComponent from '../components/ModalComponent';
 import { AnalyticsDashboard } from './admin/AnalyticsDashboard';
@@ -40,10 +42,13 @@ export default function AdminDashboard() {
     fetchAdminOrders,
   } = useBookStore();
 
-  const [activeTab, setActiveTab] = useState<'analytics' | 'books' | 'orders' | 'customers'>('analytics');
+  const [activeTab, setActiveTab] = useState<'analytics' | 'books' | 'orders' | 'customers' | 'logs'>('analytics');
   
   const [users, setUsers] = useState<User[]>([]);
   const [loadingUsers, setLoadingUsers] = useState(false);
+  
+  const [systemLogs, setSystemLogs] = useState<string[]>([]);
+  const [loadingLogs, setLoadingLogs] = useState(false);
 
   useEffect(() => {
     fetchAllBooks();
@@ -62,6 +67,25 @@ export default function AdminDashboard() {
       setLoadingUsers(false);
     }
   };
+
+  const loadLogs = async () => {
+    setLoadingLogs(true);
+    try {
+      const data = await adminService.getSystemLogs();
+      setSystemLogs(data);
+    } catch {
+      showToast.showToast('Erro ao carregar logs do sistema.', 'error');
+    } finally {
+      setLoadingLogs(false);
+    }
+  };
+
+  // Automatically load logs when tab is selected
+  useEffect(() => {
+    if (activeTab === 'logs') {
+      loadLogs();
+    }
+  }, [activeTab]);
 
   const handleRoleChange = async (userId: string, newRole: string) => {
     try {
@@ -239,6 +263,7 @@ export default function AdminDashboard() {
           { id: 'books', label: 'Estoque de Livros', icon: BookOpen },
           { id: 'orders', label: 'Controle de Envios', icon: Package },
           { id: 'customers', label: 'Contas Cadastradas', icon: Users },
+          { id: 'logs', label: 'Monitor de Sistema', icon: Terminal },
         ].map((tab) => {
           const TabIcon = tab.icon;
           return (
@@ -460,6 +485,52 @@ export default function AdminDashboard() {
                 ))}
               </div>
             )}
+          </div>
+        )}
+
+        {/* TAB 5: SYSTEM LOGS TERMINAL */}
+        {activeTab === 'logs' && (
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
+            <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-3">
+              <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-600 flex items-center gap-2">
+                <Terminal className="h-5 w-5 text-emerald-550" /> Consola de Logs do Sistema
+              </h3>
+              <button
+                onClick={loadLogs}
+                disabled={loadingLogs}
+                className="inline-flex items-center gap-2 text-xs font-bold px-3.5 py-2 rounded-xl bg-zinc-100 hover:bg-zinc-200 text-zinc-700 dark:bg-zinc-800 dark:hover:bg-zinc-700 dark:text-zinc-300 transition"
+              >
+                <RefreshCw className={`h-3.5 w-3.5 ${loadingLogs ? 'animate-spin' : ''}`} /> Atualizar Logs
+              </button>
+            </div>
+
+            <div className="bg-zinc-950 rounded-xl border border-zinc-800 p-4 h-[450px] overflow-y-auto font-mono text-[11px] shadow-inner relative custom-scrollbar">
+              {loadingLogs && systemLogs.length === 0 ? (
+                <div className="text-emerald-500 animate-pulse">Estabelecendo conexão com o servidor de logs...</div>
+              ) : (
+                <div className="space-y-1.5">
+                  {systemLogs.map((log, index) => {
+                    // Extract colors based on log level
+                    let colorClass = "text-zinc-400";
+                    if (log.includes(" INFO ")) colorClass = "text-sky-400";
+                    if (log.includes(" WARN ")) colorClass = "text-amber-400";
+                    if (log.includes(" ERROR ")) colorClass = "text-rose-500";
+                    if (log.includes(" REST: ")) colorClass = "text-emerald-400 font-bold";
+                    
+                    return (
+                      <div key={index} className={`break-words ${colorClass}`}>
+                        <span className="opacity-50 select-none mr-2">{index + 1}</span> {log}
+                      </div>
+                    );
+                  })}
+                  {systemLogs.length === 0 && (
+                    <div className="text-zinc-500 italic">Nenhum log disponível ou o ficheiro está vazio.</div>
+                  )}
+                  <div className="text-emerald-500 animate-pulse mt-2">_</div>
+                </div>
+              )}
+            </div>
+            <p className="text-[10px] text-zinc-500 text-right">Mostrando as últimas linhas gravadas no sistema (Max 200).</p>
           </div>
         )}
 

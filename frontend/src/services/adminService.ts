@@ -10,5 +10,10 @@ export const adminService = {
   async updateUserRole(id: string, role: string): Promise<User> {
     const { data } = await api.patch<User>(`/admin/users/${id}/role?role=${role}`);
     return data;
+  },
+
+  async getSystemLogs(): Promise<string[]> {
+    const { data } = await api.get<string[]>('/admin/logs');
+    return data;
   }
 };
