@@ -198,7 +198,7 @@ export default function Dashboard() {
     switch (status) {
       case 'delivered':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-705 border border-emerald-250 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-emerald-950/20 dark:text-emerald-400 font-mono">
+          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-300 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-emerald-950/20 dark:text-emerald-400 font-mono">
             <CheckCircle className="h-3 w-3" /> Entregue
           </span>
         );
@@ -210,13 +210,13 @@ export default function Dashboard() {
         );
       case 'cancelled':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 text-rose-705 border border-rose-250 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-rose-950/20 dark:text-rose-450 font-mono">
+          <span className="inline-flex items-center gap-1 rounded-full bg-rose-50 text-rose-700 border border-rose-300 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-rose-950/20 dark:text-rose-500 font-mono">
             Cancelado
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-705 border border-amber-250 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-amber-950/20 dark:text-amber-400 font-mono animate-pulse">
+          <span className="inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-700 border border-amber-300 px-2.5 py-0.5 text-[10px] font-bold tracking-wider uppercase dark:bg-amber-950/20 dark:text-amber-400 font-mono animate-pulse">
             Processando
           </span>
         );
@@ -264,7 +264,7 @@ export default function Dashboard() {
     <div className="py-6 md:py-10 space-y-8" id="bookverse-user-dashboard">
       
       {/* ACCOUNT BANNER SECTION */}
-      <div className="rounded-3xl bg-zinc-900 border border-zinc-805 text-white p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left relative overflow-hidden shadow-md">
+      <div className="rounded-3xl bg-zinc-900 border border-zinc-800 text-white p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 text-center md:text-left relative overflow-hidden shadow-md">
         <div className="absolute top-0 right-0 h-40 w-40 bg-blue-500/15 rounded-full pointer-events-none blur-3xl" />
         <img
           src={user?.avatar}
@@ -310,7 +310,7 @@ export default function Dashboard() {
       </div>
 
       {/* TABS SELECTOR CONTAINER ROW */}
-      <div className="border-b border-zinc-150 dark:border-zinc-805 flex flex-wrap gap-1">
+      <div className="border-b border-zinc-200 dark:border-zinc-800 flex flex-wrap gap-1">
         {[
           { id: 'profile', label: 'Meu perfil', icon: User },
           { id: 'seller-portal', label: getPortugueseTabLabel(user?.userType), icon: LayoutDashboard },
@@ -326,7 +326,7 @@ export default function Dashboard() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-2 rounded-t-xl px-4 py-3 text-xs font-bold uppercase tracking-wider select-none border-b-2 transition ${
                 activeTab === tab.id
-                  ? 'border-blue-600 bg-blue-50/20 text-blue-606 dark:text-blue-400'
+                  ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:text-blue-400'
                   : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-200'
               }`}
             >
@@ -341,7 +341,7 @@ export default function Dashboard() {
         
         {/* T-1: PROFILE */}
         {activeTab === 'profile' && (
-          <form onSubmit={handleProfileSave} className="max-w-xl rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
+          <form onSubmit={handleProfileSave} className="max-w-xl rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50 border-b pb-1.5 flex items-center gap-2">
               <User className="h-4.5 w-4.5 text-blue-500" /> Configurações de Perfil
             </h3>
@@ -355,7 +355,7 @@ export default function Dashboard() {
                     required
                     value={profileName}
                     onChange={(e) => setProfileName(e.target.value)}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
 
@@ -366,7 +366,7 @@ export default function Dashboard() {
                     required
                     value={profileEmail}
                     onChange={(e) => setProfileEmail(e.target.value)}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
               </div>
@@ -380,7 +380,7 @@ export default function Dashboard() {
                     required
                     value={profileCompanyName}
                     onChange={(e) => setProfileCompanyName(e.target.value)}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
               )}
@@ -392,7 +392,7 @@ export default function Dashboard() {
                     type="text"
                     value={profileCity}
                     onChange={(e) => setProfileCity(e.target.value)}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
                 <div>
@@ -402,7 +402,7 @@ export default function Dashboard() {
                     maxLength={2}
                     value={profileState}
                     onChange={(e) => setProfileState(e.target.value.toUpperCase())}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-center text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-center text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
               </div>
@@ -414,7 +414,7 @@ export default function Dashboard() {
                   value={profileWhatsapp}
                   onChange={(e) => setProfileWhatsapp(e.target.value)}
                   placeholder="+55 (11) 99999-9999"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -424,7 +424,7 @@ export default function Dashboard() {
                   rows={3}
                   value={profileBio}
                   onChange={(e) => setProfileBio(e.target.value)}
-                  className="w-full rounded-xl border border-zinc-250 bg-white p-3.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white p-3.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
             </div>
@@ -459,7 +459,7 @@ export default function Dashboard() {
 
             {/* EXPANDABLE BOOK REGISTER FORM (DYNAMICALLY ADJUSTED BASED ON CORRESPONDING TYPE) */}
             {isAddBookOpen && (
-              <form onSubmit={handleAddBookSubmit} className="rounded-2xl border border-zinc-150 p-6 bg-zinc-50 dark:bg-zinc-900/60 dark:border-zinc-805 space-y-4 animate-slide-in">
+              <form onSubmit={handleAddBookSubmit} className="rounded-2xl border border-zinc-200 p-6 bg-zinc-50 dark:bg-zinc-900/60 dark:border-zinc-800 space-y-4 animate-slide-in">
                 <h4 className="text-sm font-bold border-b pb-2 flex items-center gap-1 text-zinc-800 dark:text-zinc-100">
                   <PlusCircle className="h-4.5 w-4.5 text-blue-500" /> Dados do Cadastro Litérário
                 </h4>
@@ -507,7 +507,7 @@ export default function Dashboard() {
                   </div>
 
                   <div>
-                    <label className="text-[10px] text-zinc-405 font-bold font-mono uppercase block mb-1">Preço Cobrado (Kz) *</label>
+                    <label className="text-[10px] text-zinc-400 font-bold font-mono uppercase block mb-1">Preço Cobrado (Kz) *</label>
                     <input
                       type="number"
                       step="1"
@@ -650,7 +650,7 @@ export default function Dashboard() {
                 <div className="flex gap-4 p-3 bg-blue-500/10 rounded-xl text-xs dark:bg-blue-500/5 select-none text-left">
                   <MapPin className="h-5 w-5 text-blue-500 shrink-0" />
                   <div>
-                    <span className="font-bold text-zinc-800 dark:text-zinc-205 block">Sua localização foi detectada!</span>
+                    <span className="font-bold text-zinc-800 dark:text-zinc-200 block">Sua localização foi detectada!</span>
                     <span className="text-zinc-500 mt-0.5 block leading-relaxed">
                       Este anúncio será registrado em <span className="font-semibold text-blue-600 dark:text-blue-400">{user?.city || 'sua localização'}, {user?.state || 'BR'}</span>. Certifique-se de que os dados de localização estão preenchidos no seu Perfil para desapegos e compras locais.
                     </span>
@@ -670,7 +670,7 @@ export default function Dashboard() {
             {myListedBooks.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {myListedBooks.map((b) => (
-                  <div key={b.id} className="rounded-2xl border border-zinc-150 p-4 bg-white dark:bg-zinc-900 dark:border-zinc-805 flex flex-col md:flex-row gap-4 items-start shadow-sm hover:shadow transition">
+                  <div key={b.id} className="rounded-2xl border border-zinc-200 p-4 bg-white dark:bg-zinc-900 dark:border-zinc-800 flex flex-col md:flex-row gap-4 items-start shadow-sm hover:shadow transition">
                     <div className={`h-24 w-16 shrink-0 rounded bg-gradient-to-br ${b.coverColor} shadow relative flex items-center justify-center text-white text-[8px] font-black uppercase text-center overflow-hidden`}>
                       <div className="absolute top-0 bottom-0 left-0 w-0.5 bg-black/15" />
                       COV
@@ -737,7 +737,7 @@ export default function Dashboard() {
                 {orders.map((ord) => (
                   <div
                     key={ord.id}
-                    className="rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4"
+                    className="rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4"
                   >
                     {/* Header line order */}
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-zinc-100 pb-3 dark:border-zinc-800">
@@ -759,8 +759,8 @@ export default function Dashboard() {
                        {ord.items.map((it) => (
                         <div key={it.bookId} className="flex justify-between items-center text-xs">
                           <div>
-                            <span className="font-semibold text-zinc-805 dark:text-zinc-105 block leading-tight">{it.title}</span>
-                            <span className="text-[10px] font-bold text-zinc-405 dark:text-zinc-405 uppercase font-mono block mt-0.5">
+                            <span className="font-semibold text-zinc-800 dark:text-zinc-100 block leading-tight">{it.title}</span>
+                            <span className="text-[10px] font-bold text-zinc-400 dark:text-zinc-400 uppercase font-mono block mt-0.5">
                               Formato: {it.selectedFormat === 'physical' ? 'Físico' : it.selectedFormat.toUpperCase()} | Qtd: {it.quantity}
                             </span>
                           </div>
@@ -771,7 +771,7 @@ export default function Dashboard() {
 
                     {/* Footer values breakdowns */}
                     <div className="border-t border-zinc-100 pt-3 dark:border-zinc-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-                      <div className="flex gap-4 font-mono text-zinc-550 text-[10px]">
+                      <div className="flex gap-4 font-mono text-zinc-600 text-[10px]">
                         <span>Imposto: Kz {ord.tax.toLocaleString('pt-AO')}</span>
                         {ord.discount > 0 && <span className="text-emerald-500">Desconto: -Kz {ord.discount.toLocaleString('pt-AO')}</span>}
                         <span>Frete: Kz {ord.shippingCharge.toLocaleString('pt-AO')}</span>
@@ -800,7 +800,7 @@ export default function Dashboard() {
                           </button>
                         )}
                         <div className="sm:text-right w-full sm:w-auto mt-2 sm:mt-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-zinc-100 dark:border-zinc-800">
-                          <span className="text-[10px] text-zinc-403 uppercase tracking-wider block font-mono">Total Pago</span>
+                          <span className="text-[10px] text-zinc-400 uppercase tracking-wider block font-mono">Total Pago</span>
                           <p className="font-black text-sm text-zinc-900 dark:text-zinc-50 font-mono mt-0.5">Kz {ord.total.toLocaleString('pt-AO')}</p>
                         </div>
                       </div>
@@ -852,7 +852,7 @@ export default function Dashboard() {
               <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
                 <Library className="h-4.5 w-4.5 text-blue-500" /> Minha Biblioteca Digital
               </h3>
-              <Link to="/digital-library" className="text-xs font-bold text-blue-606 dark:text-blue-400 flex items-center gap-1">
+              <Link to="/digital-library" className="text-xs font-bold text-blue-600 dark:text-blue-400 flex items-center gap-1">
                 Leitor de PDFs & ePUBs <BookOpen className="h-4 w-4" />
               </Link>
             </div>
@@ -865,7 +865,7 @@ export default function Dashboard() {
                   return (
                     <div
                       key={item.bookId}
-                      className="rounded-2xl border border-zinc-150 p-4 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4"
+                      className="rounded-2xl border border-zinc-200 p-4 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4"
                     >
                       <div className="flex items-center gap-3">
                         <div className={`h-11 w-[33px] rounded bg-gradient-to-br ${bDetails.coverColor} relative overflow-hidden flex items-center justify-center text-white font-serif font-black text-[6px] shadow-sm`}>

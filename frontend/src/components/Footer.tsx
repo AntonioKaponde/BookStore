@@ -18,7 +18,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-zinc-150 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950/60" id="bookverse-main-footer">
+    <footer className="border-t border-zinc-200 bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-950/60" id="bookverse-main-footer">
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-3">
           
@@ -71,7 +71,7 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <span className="text-xs font-mono text-zinc-405 dark:text-zinc-510 bg-zinc-200 dark:bg-zinc-850 px-1.5 py-0.5 rounded-md inline-block mt-1">
+                  <span className="text-xs font-mono text-zinc-400 dark:text-zinc-510 bg-zinc-200 dark:bg-zinc-900 px-1.5 py-0.5 rounded-md inline-block mt-1">
                     Spring Boot REST preparado
                   </span>
                 </li>
@@ -79,7 +79,7 @@ export default function Footer() {
             </div>
 
             <div>
-              <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-505 font-mono">
+              <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
                 Meu espaço
               </h5>
               <ul className="mt-4 space-y-2.5">
@@ -103,10 +103,10 @@ export default function Footer() {
 
             {/* NEWSLETTER FORM */}
             <div className="col-span-2 sm:col-span-1">
-              <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-505 font-mono">
+              <h5 className="text-xs font-bold uppercase tracking-widest text-zinc-400 dark:text-zinc-500 font-mono">
                 Assinar informações
               </h5>
-              <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-405 leading-relaxed">
+              <p className="mt-2 text-xs text-zinc-500 dark:text-zinc-400 leading-relaxed">
                 Receba semanalmente ensaios selecionados, análises críticas e pacotes de códigos de desconto diretamente em sua casa.
               </p>
               <form onSubmit={handleSubscribe} className="mt-4 flex flex-col gap-2">
@@ -116,11 +116,11 @@ export default function Footer() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter email..."
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2 pr-10 text-xs text-zinc-900 shadow-sm outline-none focus:border-blue-650 dark:border-zinc-805 dark:bg-zinc-900 dark:text-zinc-50"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2 pr-10 text-xs text-zinc-900 shadow-sm outline-none focus:border-blue-700 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-50"
                   />
                   <button
                     type="submit"
-                    className="absolute right-1 text-zinc-550 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 p-1.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
+                    className="absolute right-1 text-zinc-600 hover:text-blue-600 dark:text-zinc-400 dark:hover:text-blue-400 p-1.5 rounded-lg hover:bg-zinc-50 dark:hover:bg-zinc-800 transition-colors cursor-pointer"
                   >
                     <Send className="h-3.5 w-3.5" />
                   </button>
@@ -131,7 +131,7 @@ export default function Footer() {
         </div>
 
         {/* SUB FOOTER DETAILS */}
-        <div className="mt-12 border-t border-zinc-150 dark:border-zinc-805 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div className="mt-12 border-t border-zinc-200 dark:border-zinc-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-400">
             &copy; 2026 Livraria Mulemba. Todos os direitos reservados. Rede literária de Angola.
           </p>

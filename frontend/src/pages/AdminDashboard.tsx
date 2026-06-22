@@ -24,6 +24,7 @@ import {
   Grid,
 } from 'lucide-react';
 import ModalComponent from '../components/ModalComponent';
+import { AnalyticsDashboard } from './admin/AnalyticsDashboard';
 
 export default function AdminDashboard() {
   const {
@@ -216,16 +217,16 @@ export default function AdminDashboard() {
     <div className="py-6 md:py-10 space-y-8" id="bookverse-admin-panel">
       
       {/* HEADER ROW */}
-      <div className="border-b border-zinc-150 dark:border-zinc-805 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="border-b border-zinc-200 dark:border-zinc-800 pb-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-450 font-mono">Console de Operações</span>
-          <h1 className="text-3xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Painel Geral do Administrador</h1>
-          <p className="text-sm text-zinc-505 mt-1">Gerencie estoques físicos de livrarias, controle o envio de pedidos e monitore as estatísticas financeiras.</p>
+          <span className="text-xs font-extrabold uppercase tracking-widest text-emerald-600 dark:text-emerald-500 font-mono">Console de Operações</span>
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Painel Geral do Administrador</h1>
+          <p className="text-sm text-zinc-500 mt-1">Gerencie estoques físicos de livrarias, controle o envio de pedidos e monitore as estatísticas financeiras.</p>
         </div>
         
         <button
           onClick={handleOpenAddModal}
-          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-650 hover:bg-emerald-750 text-white font-bold text-xs px-5 py-3 cursor-pointer shadow-sm"
+          className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs px-5 py-3 cursor-pointer shadow-sm"
         >
           <PlusCircle className="h-4.5 w-4.5" /> Cadastrar Novo Livro
         </button>
@@ -246,7 +247,7 @@ export default function AdminDashboard() {
               onClick={() => setActiveTab(tab.id as any)}
               className={`flex items-center gap-1.5 px-4 py-3 text-xs font-bold uppercase tracking-wider border-b-2 transition select-none ${
                 activeTab === tab.id
-                  ? 'border-emerald-550 bg-emerald-550/10 text-emerald-600 dark:text-emerald-410 font-bold'
+                  ? 'border-emerald-600 bg-emerald-600/10 text-emerald-600 dark:text-emerald-410 font-bold'
                   : 'border-transparent text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 hover:border-zinc-200'
               }`}
             >
@@ -261,136 +262,8 @@ export default function AdminDashboard() {
         
         {/* TAB 1: ANALYTICS OVERVIEW */}
         {activeTab === 'analytics' && (
-          <div className="space-y-8">
-            {/* STATS COUNT BENTO GRID */}
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              <div className="rounded-2xl border p-5 bg-white dark:bg-zinc-905 dark:border-zinc-800 flex items-center gap-4 shadow-sm">
-                <div className="rounded-xl bg-emerald-50 text-emerald-600 p-3 dark:bg-emerald-950/20">
-                  <DollarSign className="h-6 w-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-zinc-400 uppercase tracking-widest font-bold font-mono">Faturamento Bruto</span>
-                  <p className="text-xl font-black text-zinc-900 dark:text-zinc-50 mt-0.5 font-mono">Kz {statsRevenue.toLocaleString('pt-AO')}</p>
-                </div>
-              </div>
- 
-              <div className="rounded-2xl border p-5 bg-white dark:bg-zinc-905 dark:border-zinc-800 flex items-center gap-4 shadow-sm">
-                <div className="rounded-xl bg-blue-50 text-blue-600 p-3 dark:bg-blue-955/20">
-                  <Package className="h-6 w-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-zinc-404 uppercase tracking-widest font-bold font-mono">Obras Vendidas</span>
-                  <p className="text-xl font-black text-zinc-900 dark:text-zinc-50 mt-0.5 font-mono">{statsSoldItemsCount} unidades</p>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border p-5 bg-white dark:bg-zinc-905 dark:border-zinc-800 flex items-center gap-4 shadow-sm">
-                <div className="rounded-xl bg-amber-50 text-amber-550 p-3 dark:bg-amber-955/20">
-                  <Package className="h-6 w-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-zinc-404 uppercase tracking-widest font-bold font-mono">Alertas de Estoque</span>
-                  <p className="text-xl font-black text-zinc-900 dark:text-zinc-50 mt-0.5 font-mono">{statsLowStockBooks} livros</p>
-                </div>
-              </div>
-
-              <div className="rounded-2xl border p-5 bg-white dark:bg-zinc-909 dark:border-zinc-800 flex items-center gap-4 shadow-sm">
-                <div className="rounded-xl bg-purple-50 text-purple-600 p-3 dark:bg-purple-955/20">
-                  <BookOpen className="h-6 w-6" />
-                </div>
-                <div>
-                  <span className="text-[10px] text-zinc-404 uppercase tracking-widest font-bold font-mono">Total no Catálogo</span>
-                  <p className="text-xl font-black text-zinc-900 dark:text-zinc-50 mt-0.5 font-mono">{books.length} títulos</p>
-                </div>
-              </div>
-            </div>
-
-            {/* BAR GRAPHS AND CHART PROGRESS */}
-            <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-              <div className="rounded-2xl border p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
-                <h3 className="text-sm font-bold text-zinc-909 dark:text-zinc-50 flex items-center gap-2">
-                  <TrendingUp className="h-4.5 w-4.5 text-emerald-500" /> Distribuição de Obras por Categoria
-                </h3>
-                <div className="space-y-4">
-                  {categories.map((cat) => {
-                    const ratio = Math.round((cat.booksCount / books.length) * 100) || 10;
-                    return (
-                      <div key={cat.id} className="space-y-1 text-xs">
-                        <div className="flex justify-between font-semibold">
-                          <span>{cat.name}</span>
-                          <span className="font-mono text-zinc-405">{cat.booksCount} livros ({ratio}%)</span>
-                        </div>
-                        <div className="w-full bg-zinc-100 h-2 rounded-full dark:bg-zinc-800 overflow-hidden">
-                          <div className="bg-emerald-550 h-full rounded-full" style={{ width: `${ratio}%` }} />
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-
-              {/* Inventories stock check */}
-              <div className="rounded-2xl border p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
-                <h3 className="text-sm font-bold text-zinc-909 dark:text-zinc-50 flex items-center gap-2">
-                  <Settings className="h-4.5 w-4.5 text-blue-500" /> Livros com Estoque Baixo
-                </h3>
-                
-                <div className="space-y-3 max-h-56 overflow-y-auto">
-                  {books.filter((b) => b.type !== 'digital').slice(0, 5).map((b) => (
-                    <div key={b.id} className="flex justify-between items-center text-xs border-b pb-2 last:border-0 dark:border-zinc-800">
-                      <div>
-                        <span className="font-semibold text-zinc-850 dark:text-zinc-100 block">{b.title}</span>
-                        <span className="text-[10px] text-zinc-404 font-mono uppercase block mt-0.5">Estoque Físico: resta apenas {b.stock} unidades</span>
-                      </div>
-                      <span className={`px-2.5 py-0.5 rounded-full text-[9px] font-bold font-mono tracking-wider text-center uppercase ${
-                        b.stock < 10 ? 'bg-rose-50 border border-rose-200 text-rose-600 dark:bg-rose-950/20 dark:text-rose-400' : 'bg-zinc-100 text-zinc-500'
-                      }`}>
-                        {b.stock < 10 ? 'Reposição Crítica' : 'Adequado'}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* HEATMAP / ACTIVITY GRID */}
-            <div className="rounded-2xl border p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 mt-6 shadow-sm">
-              <h3 className="text-sm font-bold text-zinc-909 dark:text-zinc-50 flex items-center gap-2 mb-4">
-                <Grid className="h-4.5 w-4.5 text-blue-500" /> Mapa de Calor de Atividade (Acessos/Vendas)
-              </h3>
-              <div className="flex overflow-x-auto pb-2">
-                <div className="grid grid-cols-12 gap-1.5 min-w-[600px] w-full">
-                  {Array.from({ length: 84 }).map((_, i) => {
-                    // Random intensity for MVP visualization
-                    const intensity = Math.floor(Math.random() * 4);
-                    const colorClass = [
-                      'bg-zinc-100 dark:bg-zinc-800',
-                      'bg-emerald-200 dark:bg-emerald-900',
-                      'bg-emerald-400 dark:bg-emerald-700',
-                      'bg-emerald-600 dark:bg-emerald-500',
-                    ][intensity];
-                    return (
-                      <div
-                        key={i}
-                        className={`h-4 w-full rounded-sm ${colorClass} hover:ring-2 ring-emerald-300 transition-all cursor-crosshair`}
-                        title={`Nível de atividade: ${intensity}`}
-                      />
-                    );
-                  })}
-                </div>
-              </div>
-              <div className="flex items-center gap-2 justify-end mt-3 text-[10px] text-zinc-500 font-mono">
-                <span>Menos Atividade</span>
-                <div className="flex gap-1">
-                  <div className="h-3 w-3 rounded-sm bg-zinc-100 dark:bg-zinc-800"></div>
-                  <div className="h-3 w-3 rounded-sm bg-emerald-200 dark:bg-emerald-900"></div>
-                  <div className="h-3 w-3 rounded-sm bg-emerald-400 dark:bg-emerald-700"></div>
-                  <div className="h-3 w-3 rounded-sm bg-emerald-600 dark:bg-emerald-500"></div>
-                </div>
-                <span>Mais Atividade</span>
-              </div>
-            </div>
-
+          <div className="animate-fade-in">
+            <AnalyticsDashboard />
           </div>
         )}
 
@@ -404,21 +277,21 @@ export default function AdminDashboard() {
                   value={bookSearch}
                   onChange={(e) => setBookSearch(e.target.value)}
                   placeholder="Buscar livros, código ISBN..."
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2 pl-9 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2 pl-9 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
                 <Search className="absolute left-3 h-4 w-4 text-zinc-400" />
               </div>
               
               <button
                 onClick={handleOpenAddModal}
-                className="rounded-xl border border-dashed border-zinc-300 py-2.5 px-4 text-xs font-bold text-zinc-700 hover:bg-zinc-50 inline-flex items-center gap-1 cursor-pointer dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-350"
+                className="rounded-xl border border-dashed border-zinc-300 py-2.5 px-4 text-xs font-bold text-zinc-700 hover:bg-zinc-50 inline-flex items-center gap-1 cursor-pointer dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-400"
               >
-                <Plus className="h-4 w-4 text-emerald-555" /> Conectar novos títulos literários
+                <Plus className="h-4 w-4 text-emerald-550" /> Conectar novos títulos literários
               </button>
             </div>
 
             {/* List Table items */}
-            <div className="overflow-x-auto rounded-2xl border border-zinc-150 bg-white dark:bg-zinc-900 dark:border-zinc-801 shadow-sm">
+            <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white dark:bg-zinc-900 dark:border-zinc-800 shadow-sm">
               <table className="w-full text-left border-collapse text-xs">
                 <thead>
                   <tr className="bg-zinc-50/70 border-b border-zinc-200 uppercase tracking-widest text-[9px] font-mono font-bold text-zinc-400 dark:bg-zinc-950/20 dark:border-zinc-800">
@@ -429,9 +302,9 @@ export default function AdminDashboard() {
                     <th className="px-5 py-3 text-right">Ações</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-100 dark:divide-zinc-805">
+                <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
                   {bookList.map((b) => (
-                    <tr key={b.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-850/20">
+                    <tr key={b.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
                       <td className="px-5 py-3.5 flex items-center gap-3">
                         {b.coverImage ? (
                           <img src={b.coverImage} alt={b.title} className="h-11 w-8 rounded object-cover flex-shrink-0 shadow-sm border border-zinc-200 dark:border-zinc-800" />
@@ -442,8 +315,8 @@ export default function AdminDashboard() {
                           </div>
                         )}
                         <div className="overflow-hidden">
-                          <span className="font-bold text-zinc-850 dark:text-zinc-50 block leading-tight truncate max-w-xs">{b.title}</span>
-                          <span className="text-[10px] text-zinc-440 block font-mono mt-0.5">ISBN: {b.isbn || 'N/A'}</span>
+                          <span className="font-bold text-zinc-900 dark:text-zinc-50 block leading-tight truncate max-w-xs">{b.title}</span>
+                          <span className="text-[10px] text-zinc- block font-mono mt-0.5">ISBN: {b.isbn || 'N/A'}</span>
                         </div>
                       </td>
                       <td className="px-5 py-3.5">
@@ -451,9 +324,9 @@ export default function AdminDashboard() {
                           {b.type === 'both' ? 'Físico + Digital' : b.type === 'physical' ? 'Físico' : 'Digital'}
                         </span>
                       </td>
-                      <td className="px-5 py-3.5 font-bold font-mono text-zinc-900 dark:text-zinc-105">Kz {b.price.toLocaleString('pt-AO')}</td>
+                      <td className="px-5 py-3.5 font-bold font-mono text-zinc-900 dark:text-zinc-100">Kz {b.price.toLocaleString('pt-AO')}</td>
                       <td className="px-5 py-3.5">
-                        <span className={`font-mono font-bold ${b.stock < 10 ? 'text-rose-500' : 'text-zinc-650 dark:text-zinc-400'}`}>
+                        <span className={`font-mono font-bold ${b.stock < 10 ? 'text-rose-500' : 'text-zinc-700 dark:text-zinc-400'}`}>
                           {b.type === 'digital' ? 'Infinito (Digital)' : b.stock}
                         </span>
                       </td>
@@ -466,7 +339,7 @@ export default function AdminDashboard() {
                         </button>
                         <button
                           onClick={() => handleDeleteBook(b.id, b.title)}
-                          className="p-1.5 rounded-lg border hover:bg-rose-50 text-rose-550 active:scale-95 dark:border-zinc-800"
+                          className="p-1.5 rounded-lg border hover:bg-rose-50 text-rose-600 active:scale-95 dark:border-zinc-800"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -488,12 +361,12 @@ export default function AdminDashboard() {
                 value={orderSearch}
                 onChange={(e) => setOrderSearch(e.target.value)}
                 placeholder="Buscar pedidos por código ou nome..."
-                className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2 pl-9 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2 pl-9 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
               />
               <Search className="absolute left-3 h-4 w-4 text-zinc-400" />
             </div>
 
-            <div className="overflow-x-auto rounded-2xl border border-zinc-150 bg-white dark:bg-zinc-900 dark:border-zinc-805 shadow-sm">
+            <div className="overflow-x-auto rounded-2xl border border-zinc-200 bg-white dark:bg-zinc-900 dark:border-zinc-800 shadow-sm">
               <table className="w-full text-left text-xs border-collapse">
                 <thead>
                   <tr className="bg-zinc-50/70 border-b border-zinc-200 uppercase tracking-widest text-[9px] font-mono font-bold text-zinc-400 dark:bg-zinc-950/20 dark:border-zinc-800">
@@ -506,13 +379,13 @@ export default function AdminDashboard() {
                 </thead>
                 <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800">
                   {orderList.map((ord) => (
-                    <tr key={ord.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-850/20">
-                      <td className="px-5 py-3 text-sm font-black text-blue-650 dark:text-blue-400 font-mono">{ord.id}</td>
-                      <td className="px-5 py-3 font-semibold text-zinc-900 dark:text-zinc-105">{ord.shippingAddress.fullName}</td>
+                    <tr key={ord.id} className="hover:bg-zinc-50/50 dark:hover:bg-zinc-900/20">
+                      <td className="px-5 py-3 text-sm font-black text-blue-700 dark:text-blue-400 font-mono">{ord.id}</td>
+                      <td className="px-5 py-3 font-semibold text-zinc-900 dark:text-zinc-100">{ord.shippingAddress.fullName}</td>
                       <td className="px-5 py-3 max-w-xs truncate text-[11px] text-zinc-500">
                         {ord.items.map((i) => `${i.title} (${i.quantity})`).join(', ')}
                       </td>
-                      <td className="px-5 py-3 font-bold font-mono text-zinc-900 dark:text-zinc-101">Kz {ord.total.toLocaleString('pt-AO')}</td>
+                      <td className="px-5 py-3 font-bold font-mono text-zinc-900 dark:text-zinc-100">Kz {ord.total.toLocaleString('pt-AO')}</td>
                       <td className="px-5 py-3">
                         <select
                           value={ord.status}
@@ -539,9 +412,9 @@ export default function AdminDashboard() {
 
         {/* TAB 4: CUSTOMERS LOG PANEL */}
         {activeTab === 'customers' && (
-          <div className="rounded-2xl border border-zinc-150 bg-white p-6 dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
-            <h3 className="text-base font-bold text-zinc-909 dark:text-zinc-550 flex items-center gap-2">
-              <Users className="h-5 w-5 text-emerald-555" /> Gestão de Utilizadores e Permissões
+          <div className="rounded-2xl border border-zinc-200 bg-white p-6 dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
+            <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-600 flex items-center gap-2">
+              <Users className="h-5 w-5 text-emerald-550" /> Gestão de Utilizadores e Permissões
             </h3>
 
             {loadingUsers ? (
@@ -549,7 +422,7 @@ export default function AdminDashboard() {
             ) : (
               <div className="space-y-3.5">
                 {users.map((u) => (
-                  <div key={u.id} className="flex flex-col sm:flex-row justify-between sm:items-center text-xs p-3.5 rounded-xl border border-zinc-105 dark:border-zinc-800 gap-3">
+                  <div key={u.id} className="flex flex-col sm:flex-row justify-between sm:items-center text-xs p-3.5 rounded-xl border border-zinc-100 dark:border-zinc-800 gap-3">
                     <div className="flex items-center gap-3">
                       <img
                         src={u.avatar || "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&auto=format&fit=crop&q=80"}
@@ -557,16 +430,16 @@ export default function AdminDashboard() {
                         className="h-8 w-8 rounded-full object-cover"
                       />
                       <div>
-                        <h5 className="font-bold text-zinc-905 dark:text-zinc-50 flex items-center gap-2">
+                        <h5 className="font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
                           {u.name}
                           {u.role === 'admin' && <CheckCircle className="h-3 w-3 text-emerald-500" />}
                         </h5>
-                        <span className="text-[10px] text-zinc-404 font-mono">{u.email}</span>
+                        <span className="text-[10px] text-zinc-400 font-mono">{u.email}</span>
                       </div>
                     </div>
                     
                     <div className="flex items-center gap-2">
-                      <span className="rounded bg-sky-50 text-sky-700 px-2.5 py-0.5 text-[9px] font-bold font-mono uppercase dark:bg-zinc-850 dark:text-sky-400 border border-sky-100 mr-2">
+                      <span className="rounded bg-sky-50 text-sky-700 px-2.5 py-0.5 text-[9px] font-bold font-mono uppercase dark:bg-zinc-900 dark:text-sky-400 border border-sky-100 mr-2">
                         {u.userType || 'Cliente'}
                       </span>
                       
@@ -601,31 +474,31 @@ export default function AdminDashboard() {
       >
         <form onSubmit={handleFormSubmit} className="grid grid-cols-1 gap-4 sm:grid-cols-2 text-xs">
           <div className="sm:col-span-2">
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Título do Livro *</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Título do Livro *</label>
             <input
               type="text"
               required
               value={formTitle}
               onChange={(e) => setFormTitle(e.target.value)}
               placeholder="Ex: Arquitetura de Sistemas Cognitivos"
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div className="sm:col-span-2">
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Sinopse / Descrição da Obra *</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Sinopse / Descrição da Obra *</label>
             <textarea
               required
               rows={3}
               value={formDescription}
               onChange={(e) => setFormDescription(e.target.value)}
               placeholder="Sinopse do autor, sumário, capítulos e temas centrais da obra..."
-              className="w-full rounded-xl border border-zinc-250 bg-white p-3 outline-none focus:border-emerald-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="w-full rounded-xl border border-zinc-300 bg-white p-3 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Preço (Kz) *</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Preço (Kz) *</label>
             <input
               type="number"
               step="0.01"
@@ -633,16 +506,16 @@ export default function AdminDashboard() {
               value={formPrice}
               onChange={(e) => setFormPrice(parseFloat(e.target.value))}
               placeholder="19.99"
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 text-xs outline-none focus:border-emerald-650 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-105"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-xs outline-none focus:border-emerald-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Formatos Disponibilizados</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Formatos Disponibilizados</label>
             <select
               value={formType}
               onChange={(e: any) => setFormType(e.target.value)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-105 font-bold text-zinc-800"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 font-bold text-zinc-800"
             >
               <option value="both">Ambos (Físico + Digital)</option>
               <option value="physical">Apenas Físico</option>
@@ -651,11 +524,11 @@ export default function AdminDashboard() {
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Código da Categoria</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Código da Categoria</label>
             <select
               value={formCategoryId}
               onChange={(e) => setFormCategoryId(e.target.value)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-801 dark:bg-zinc-950 dark:text-zinc-105 font-bold text-zinc-800"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 font-bold text-zinc-800"
             >
               {categories.map((c) => (
                 <option key={c.id} value={c.id}>
@@ -666,11 +539,11 @@ export default function AdminDashboard() {
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Escritor / Autor</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Escritor / Autor</label>
             <select
               value={formAuthorId}
               onChange={(e) => setFormAuthorId(e.target.value)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-801 dark:bg-zinc-950 dark:text-zinc-105 font-bold text-zinc-800"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 font-bold text-zinc-800"
             >
               {authors.map((a) => (
                 <option key={a.id} value={a.id}>
@@ -681,39 +554,39 @@ export default function AdminDashboard() {
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Capa do Livro (Imagem)</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Capa do Livro (Imagem)</label>
             <input
               type="file"
               accept="image/*"
               onChange={(e) => setCoverFile(e.target.files?.[0] || null)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-1.5 outline-none focus:border-emerald-600 dark:border-zinc-801 dark:bg-zinc-950 dark:text-zinc-105 font-bold text-zinc-800 text-xs"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-1.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 font-bold text-zinc-800 text-xs"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Ficheiro Digital (PDF/EPUB)</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Ficheiro Digital (PDF/EPUB)</label>
             <input
               type="file"
               accept=".pdf,.epub"
               onChange={(e) => setEbookFile(e.target.files?.[0] || null)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-1.5 outline-none focus:border-emerald-600 dark:border-zinc-801 dark:bg-zinc-950 dark:text-zinc-105 font-bold text-zinc-800 text-xs"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-1.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100 font-bold text-zinc-800 text-xs"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Número de Páginas</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Número de Páginas</label>
             <input
               type="number"
               required
               value={formPages}
               onChange={(e) => setFormPages(parseInt(e.target.value))}
               placeholder="320"
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 outline-none focus:border-emerald-650 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-105"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 outline-none focus:border-emerald-700 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Estoque do Livro Físico</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Estoque do Livro Físico</label>
             <input
               type="number"
               required
@@ -721,37 +594,37 @@ export default function AdminDashboard() {
               value={formType === 'digital' ? 999 : formStock}
               onChange={(e) => setFormStock(parseInt(e.target.value))}
               placeholder="50"
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 outline-none focus:border-emerald-650 disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-105"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 outline-none focus:border-emerald-700 disabled:opacity-50 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Código ISBN da Edição *</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Código ISBN da Edição *</label>
             <input
               type="text"
               required
               value={formIsbn}
               onChange={(e) => setFormIsbn(e.target.value)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2.5 outline-none focus:border-emerald-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
           <div>
-            <label className="text-zinc-405 font-bold font-mono uppercase block mb-1">Editora Responsável *</label>
+            <label className="text-zinc-400 font-bold font-mono uppercase block mb-1">Editora Responsável *</label>
             <input
               type="text"
               required
               value={formPublisher}
               onChange={(e) => setFormPublisher(e.target.value)}
-              className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2.5 outline-none focus:border-emerald-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+              className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2.5 outline-none focus:border-emerald-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
             />
           </div>
 
-          <div className="sm:col-span-2 pt-2 border-t border-zinc-150 dark:border-zinc-805 mt-2 flex justify-end gap-3">
+          <div className="sm:col-span-2 pt-2 border-t border-zinc-200 dark:border-zinc-800 mt-2 flex justify-end gap-3">
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="rounded-xl px-5 py-2.5 text-xs font-bold text-zinc-650 hover:bg-zinc-100 dark:text-zinc-350 dark:hover:bg-zinc-805"
+              className="rounded-xl px-5 py-2.5 text-xs font-bold text-zinc-700 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
             >
               Cancelar
             </button>

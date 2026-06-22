@@ -68,7 +68,7 @@ export default function RatingComponent({
               <div className="relative">
                 {isHalf ? (
                   <>
-                    <Star className={`${sizeClasses[size]} text-zinc-300 dark:text-zinc-650`} />
+                    <Star className={`${sizeClasses[size]} text-zinc-300 dark:text-zinc-700`} />
                     <div className="absolute top-0 left-0 w-1/2 overflow-hidden">
                       <Star className={`${sizeClasses[size]} fill-amber-400 text-amber-400`} />
                     </div>

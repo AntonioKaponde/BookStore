@@ -19,7 +19,7 @@ export default function CategoryCard({ category, isActive = false, onClick }: Ca
       className={`group flex items-center gap-4 rounded-2xl border p-5 text-left transition-all duration-200 select-none w-full ${
         isActive
           ? 'border-blue-600 bg-blue-50/40 dark:bg-blue-950/20 text-blue-600 dark:text-blue-400 shadow-sm shadow-blue-500/5'
-          : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-850 dark:text-zinc-200 hover:border-zinc-330 hover:shadow-md dark:hover:border-zinc-700'
+          : 'border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-200 hover:border-zinc-330 hover:shadow-md dark:hover:border-zinc-700'
       }`}
     >
       <div

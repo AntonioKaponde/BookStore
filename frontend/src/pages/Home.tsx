@@ -59,7 +59,7 @@ export default function Home() {
 
         <div className="relative z-10 grid grid-cols-1 gap-8 md:grid-cols-12 md:items-center">
           <div className="md:col-span-7 space-y-6 text-left">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-405 tracking-wider uppercase">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-400 tracking-wider uppercase">
               <Sparkles className="h-3 w-3 animate-spin-slow" /> Horizonte de Leitura 2026
             </span>
             <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl lg:text-6xl font-sans">
@@ -119,7 +119,7 @@ export default function Home() {
             <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 font-mono">Recomendações Especiais</span>
             <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Obras em Destaque</h2>
           </div>
-          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-605 dark:text-blue-410">
+          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-600 dark:text-blue-410">
             Ver Todos <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -131,10 +131,10 @@ export default function Home() {
       </section>
 
       {/* 4. CATEGORIES SECTIONS */}
-      <section className="bg-zinc-50/70 p-8 rounded-3xl dark:bg-zinc-950/20 border border-zinc-100 dark:border-zinc-850/40" id="section-categories">
+      <section className="bg-zinc-50/70 p-8 rounded-3xl dark:bg-zinc-950/20 border border-zinc-100 dark:border-zinc-900/40" id="section-categories">
         <div className="max-w-3xl mx-auto text-center mb-8">
-          <span className="text-xs font-extrabold uppercase tracking-widest text-amber-550 dark:text-amber-400 font-mono">Navegar por Categorias</span>
-          <h2 className="text-2xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Navegue por Universos Literários</h2>
+          <span className="text-xs font-extrabold uppercase tracking-widest text-amber-600 dark:text-amber-400 font-mono">Navegar por Categorias</span>
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Navegue por Universos Literários</h2>
           <p className="text-sm text-zinc-500 max-w-md mx-auto mt-2">
             Refine sua pesquisa encontrando categorias específicas, desde engenharia de software até romances clássicos.
           </p>
@@ -154,10 +154,10 @@ export default function Home() {
       <section id="section-bestsellers">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-550 font-mono font-bold">Mais Vendidos</span>
-            <h2 className="text-2xl font-bold text-zinc-907 dark:text-zinc-50 mt-1">Mais Queridos do Público</h2>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-amber-600 font-mono font-bold">Mais Vendidos</span>
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Mais Queridos do Público</h2>
           </div>
-          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-650 dark:text-blue-400">
+          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-700 dark:text-blue-400">
             Ver Best-sellers <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -172,10 +172,10 @@ export default function Home() {
       <section id="section-newreleases">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <span className="text-xs font-extrabold uppercase tracking-widest text-blue-605 dark:text-blue-410 font-mono">As Últimas Novidades</span>
-            <h2 className="text-2xl font-bold text-zinc-905 dark:text-zinc-50 mt-1">Lançamentos Recentes</h2>
+            <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-410 font-mono">As Últimas Novidades</span>
+            <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Lançamentos Recentes</h2>
           </div>
-          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-650 dark:text-blue-400">
+          <Link to="/catalog" className="group flex items-center gap-1.5 text-sm font-semibold text-blue-700 dark:text-blue-400">
             Explorar Recentes <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
@@ -191,16 +191,16 @@ export default function Home() {
       <section className="space-y-6" id="section-reviews">
         <div className="text-center max-w-xl mx-auto">
           <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 font-mono">Depoimentos dos Leitores</span>
-          <h2 className="text-2xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Opinião de Quem já Comprou</h2>
+          <h2 className="text-2xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Opinião de Quem já Comprou</h2>
         </div>
         
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
           {reviews.slice(0, 3).map((review) => (
-            <div key={review.id} className="rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 shadow-sm flex flex-col justify-between">
-              <p className="text-sm italic text-zinc-650 dark:text-zinc-350 leading-relaxed">
+            <div key={review.id} className="rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 shadow-sm flex flex-col justify-between">
+              <p className="text-sm italic text-zinc-700 dark:text-zinc-400 leading-relaxed">
                 "{review.comment}"
               </p>
-              <div className="flex items-center gap-3 mt-4 border-t border-zinc-100 dark:border-zinc-805 pt-3">
+              <div className="flex items-center gap-3 mt-4 border-t border-zinc-100 dark:border-zinc-800 pt-3">
                 <div className="h-9 w-9 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 font-bold dark:bg-amber-900/30 dark:text-amber-400 border border-amber-200 dark:border-amber-800/50">
                   {review.userName.charAt(0).toUpperCase()}
                 </div>
@@ -265,7 +265,7 @@ export default function Home() {
           <p className="text-xs text-zinc-400">Suporte a formatos ePUB e PDF de alta qualidade para e-readers.</p>
         </div>
         <div className="space-y-1">
-          <div className="mx-auto rounded-full bg-blue-50 dark:bg-zinc-850 w-10 h-10 flex items-center justify-center text-blue-600 dark:text-blue-410">
+          <div className="mx-auto rounded-full bg-blue-50 dark:bg-zinc-900 w-10 h-10 flex items-center justify-center text-blue-600 dark:text-blue-410">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <h4 className="font-bold text-sm text-zinc-900 dark:text-zinc-100">Garantia e Proteção Total</h4>

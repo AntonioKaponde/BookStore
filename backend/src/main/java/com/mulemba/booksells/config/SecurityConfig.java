@@ -1,7 +1,6 @@
 package com.mulemba.booksells.config;
 
 import com.mulemba.booksells.security.JwtAuthFilter;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -51,6 +50,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/reviews", "/api/reviews/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/coupons/validate").permitAll()
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/analytics/track", "/api/analytics/track/batch").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/analytics/**").hasAnyRole("ADMIN", "SELLER")
                         .requestMatchers(HttpMethod.POST, "/api/books", "/api/books/**").hasAnyRole("ADMIN", "SELLER")
                         .requestMatchers(HttpMethod.PUT, "/api/books", "/api/books/**").hasAnyRole("ADMIN", "SELLER")
                         .requestMatchers(HttpMethod.DELETE, "/api/books", "/api/books/**").hasAnyRole("ADMIN", "SELLER")

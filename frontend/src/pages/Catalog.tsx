@@ -122,13 +122,13 @@ export default function Catalog() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Buscar títulos, descrição..."
-            className="w-full rounded-xl border border-zinc-250 bg-zinc-50 px-3.5 py-2 pl-9 pr-8 text-xs text-zinc-900 outline-none focus:border-blue-600 focus:bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
+            className="w-full rounded-xl border border-zinc-300 bg-zinc-50 px-3.5 py-2 pl-9 pr-8 text-xs text-zinc-900 outline-none focus:border-blue-600 focus:bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50"
           />
           <Search className="absolute left-3 h-4 w-4 text-zinc-400" />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute right-2.5 p-1 rounded-full text-zinc-400 hover:bg-zinc-150 hover:text-zinc-700"
+              className="absolute right-2.5 p-1 rounded-full text-zinc-400 hover:bg-zinc-200 hover:text-zinc-700"
             >
               <X className="h-3.5 w-3.5" />
             </button>
@@ -147,7 +147,7 @@ export default function Catalog() {
             className={`rounded-xl px-3 py-1.5 text-xs font-semibold ${
               !selectedCategoryId
                 ? 'bg-blue-600 text-white'
-                : 'bg-zinc-100 text-zinc-705 dark:bg-zinc-800 dark:text-zinc-300 hover:bg-zinc-200'
+                : 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 hover:bg-zinc-200'
             }`}
           >
             Todos os Gêneros
@@ -159,7 +159,7 @@ export default function Catalog() {
               className={`rounded-xl px-3 py-1.5 text-xs font-semibold ${
                 selectedCategoryId === cat.id
                   ? 'bg-blue-600 text-white'
-                  : 'bg-zinc-100 text-zinc-705 dark:bg-zinc-800 dark:text-zinc-300 hover:bg-zinc-205'
+                  : 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-300 hover:bg-zinc-200'
               }`}
             >
               {cat.name}
@@ -181,7 +181,7 @@ export default function Catalog() {
               className={`rounded-xl py-1.5 text-xs font-semibold ${
                 selectedType === type
                   ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-zinc-100 text-zinc-705 dark:bg-zinc-800 dark:text-zinc-290 hover:bg-zinc-200'
+                  : 'bg-zinc-100 text-zinc-700 dark:bg-zinc-800 dark:text-zinc-290 hover:bg-zinc-200'
               }`}
             >
               {type === 'all' ? 'Todos' : type === 'physical' ? 'Físico' : 'Digital'}
@@ -198,7 +198,7 @@ export default function Catalog() {
         <select
           value={selectedAuthorId}
           onChange={(e) => setSelectedAuthorId(e.target.value)}
-          className="mt-2.5 w-full rounded-xl border border-zinc-250 bg-white py-2 px-3 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+          className="mt-2.5 w-full rounded-xl border border-zinc-300 bg-white py-2 px-3 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
         >
           <option value="">Todos os Autores</option>
           {authors.map((aut) => (
@@ -213,7 +213,7 @@ export default function Catalog() {
 
       {/* Rating scale minimum value stars */}
       <div>
-        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-505 font-mono">
+        <h4 className="text-xs font-bold uppercase tracking-wider text-zinc-400 dark:text-zinc-500 font-mono">
           Avaliação Mínima
         </h4>
         <div className="mt-2.5 flex flex-col gap-1.5">
@@ -223,8 +223,8 @@ export default function Catalog() {
               onClick={() => setMinRating(minRating === ratingVal ? 0 : ratingVal)}
               className={`flex items-center justify-between rounded-xl p-2.5 border text-left transition ${
                 minRating === ratingVal
-                  ? 'border-blue-500 bg-blue-50/30 text-blue-600 dark:bg-blue-955/20'
-                  : 'border-zinc-150 bg-white hover:bg-zinc-50 dark:border-zinc-805 dark:bg-zinc-900 dark:hover:bg-zinc-850'
+                  ? 'border-blue-500 bg-blue-50/30 text-blue-600 dark:bg-blue-950/20'
+                  : 'border-zinc-200 bg-white hover:bg-zinc-50 dark:border-zinc-800 dark:bg-zinc-900 dark:hover:bg-zinc-900'
               }`}
             >
               <div className="flex items-center gap-1.5">
@@ -233,7 +233,7 @@ export default function Catalog() {
                   {ratingVal}+ Estrelas
                 </span>
               </div>
-              {minRating === ratingVal && <Check className="h-4 w-4 text-blue-605" />}
+              {minRating === ratingVal && <Check className="h-4 w-4 text-blue-600" />}
             </button>
           ))}
         </div>
@@ -242,7 +242,7 @@ export default function Catalog() {
       {/* Reset Filter Button */}
       <button
         onClick={resetFilters}
-        className="w-full flex items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-250 py-2.5 text-xs font-bold text-zinc-505 hover:bg-zinc-50 dark:border-zinc-805 hover:text-zinc-800 dark:hover:bg-zinc-900 cursor-pointer"
+        className="w-full flex items-center justify-center gap-2 rounded-xl border border-dashed border-zinc-300 py-2.5 text-xs font-bold text-zinc-500 hover:bg-zinc-50 dark:border-zinc-800 hover:text-zinc-800 dark:hover:bg-zinc-900 cursor-pointer"
       >
         <RotateCcw className="h-4 w-4" /> Limpar Filtros
       </button>
@@ -253,10 +253,10 @@ export default function Catalog() {
     <div className="py-6 md:py-10 space-y-6" id="bookverse-catalog-route">
       
       {/* HEADER CRUMBS AND DETAILS */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-zinc-150 dark:border-zinc-800 pb-6 gap-4">
+      <div className="flex flex-col md:flex-row md:items-center md:justify-between border-b border-zinc-200 dark:border-zinc-800 pb-6 gap-4">
         <div>
-          <span className="text-xs font-extrabold uppercase tracking-widest text-blue-605 dark:text-blue-400 font-mono">Catálogo Completo</span>
-          <h1 className="text-3xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Explorar Publicações</h1>
+          <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 font-mono">Catálogo Completo</span>
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Explorar Publicações</h1>
           <p className="text-sm text-zinc-500 mt-1">
             Descubra obras excepcionais que combinam com o seu gosto literário.
           </p>
@@ -268,7 +268,7 @@ export default function Catalog() {
           <select
             value={sortBy}
             onChange={(e: any) => setSortBy(e.target.value)}
-            className="rounded-xl border border-zinc-250 bg-white py-2 px-3 text-xs font-semibold outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+            className="rounded-xl border border-zinc-300 bg-white py-2 px-3 text-xs font-semibold outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
           >
             <option value="featured">Destaques Especiais</option>
             <option value="price-low">Preço: Menor para Maior</option>
@@ -279,7 +279,7 @@ export default function Catalog() {
           
           <button
             onClick={() => setIsMobileDrawerOpen(true)}
-            className="rounded-xl border border-zinc-250 p-2 text-zinc-500 bg-white hover:bg-zinc-50 md:hidden dark:border-zinc-800 dark:bg-zinc-950"
+            className="rounded-xl border border-zinc-300 p-2 text-zinc-500 bg-white hover:bg-zinc-50 md:hidden dark:border-zinc-800 dark:bg-zinc-950"
           >
             <SlidersHorizontal className="h-4.5 w-4.5" />
           </button>
@@ -290,7 +290,7 @@ export default function Catalog() {
       <div className="grid grid-cols-1 gap-8 md:grid-cols-4 pt-4">
         
         {/* DESKTOP SIDEBAR FILTERS */}
-        <div className="hidden md:block md:col-span-1 border-r border-zinc-150 dark:border-zinc-800 pr-6 h-fit sticky top-22">
+        <div className="hidden md:block md:col-span-1 border-r border-zinc-200 dark:border-zinc-800 pr-6 h-fit sticky top-22">
           <FiltersContent />
         </div>
 
@@ -336,7 +336,7 @@ export default function Catalog() {
           <div className="relative z-10 w-full max-w-sm bg-white dark:bg-zinc-900 p-6 h-full overflow-y-auto flex flex-col justify-between border-l border-zinc-100 dark:border-zinc-800 shadow-2xl">
             <div>
               <div className="flex items-center justify-between border-b border-zinc-100 dark:border-zinc-800 pb-3 mb-6">
-                <h3 className="text-base font-bold text-zinc-905 dark:text-zinc-50 flex items-center gap-1.5">
+                <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-1.5">
                   <SlidersHorizontal className="h-4.5 w-4.5" /> Filtros de Pesquisa
                 </h3>
                 <button

@@ -7,8 +7,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ToastNotifications from '@/components/ToastNotifications';
 import AppRoutes from '@/routes';
-import HeatmapTracker from '@/components/HeatmapTracker';
-import { PixelService } from '@/services/PixelService';
+import { AnalyticsTracker } from '@/components/AnalyticsTracker';
 
 export default function App() {
   const { theme } = useThemeStore();
@@ -25,16 +24,7 @@ export default function App() {
     }
   }, [isDarkMode]);
 
-  // Pixel and A/B Tracking Initialization
-  useEffect(() => {
-    const variant = localStorage.getItem('ab_test_theme_variant');
-    if (variant) {
-      PixelService.track('ab_test_view', { variant });
-    }
-    
-    // Simplistic page_view track on load
-    PixelService.track('page_view', { initial: true });
-  }, []);
+  // Tracking already handled by AnalyticsTracker
 
   useEffect(() => {
     loadSession();
@@ -43,6 +33,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      <AnalyticsTracker />
       <div 
         className="min-h-screen flex flex-col transition-colors duration-200 bg-zinc-50 dark:bg-zinc-950 text-zinc-910 dark:text-zinc-100 selection:bg-blue-600 selection:text-white"
         id="bookverse-root-node"
@@ -55,7 +46,6 @@ export default function App() {
 
         <Footer />
         <ToastNotifications />
-        <HeatmapTracker />
       </div>
     </BrowserRouter>
   );

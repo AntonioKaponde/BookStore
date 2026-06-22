@@ -49,7 +49,7 @@ export default function BookCard({ book }: BookCardProps) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.3 }}
-      className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-300 dark:hover:border-zinc-750 hover:shadow-lg hover:shadow-zinc-150/50 dark:hover:shadow-black/30"
+      className="group relative flex flex-col justify-between rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-4 transition-all duration-200 hover:border-zinc-300 dark:hover:border-zinc-800 hover:shadow-lg hover:shadow-zinc-200/50 dark:hover:shadow-black/30"
     >
       {/* Upper Interactive Area */}
       <div className="relative">
@@ -72,8 +72,8 @@ export default function BookCard({ book }: BookCardProps) {
           onClick={handleToggleFav}
           className={`absolute top-2 right-2 z-10 rounded-full border p-2 shadow-sm backdrop-blur-md transition-all ${
             isFav
-              ? 'border-rose-100 bg-rose-50 text-rose-605 dark:bg-rose-950/40 dark:border-rose-900/40 dark:text-rose-400'
-              : 'border-zinc-100 bg-white/90 text-zinc-400 hover:scale-105 active:scale-95 hover:text-rose-500 dark:bg-zinc-850 dark:border-zinc-800'
+              ? 'border-rose-100 bg-rose-50 text-rose-600 dark:bg-rose-950/40 dark:border-rose-900/40 dark:text-rose-400'
+              : 'border-zinc-100 bg-white/90 text-zinc-400 hover:scale-105 active:scale-95 hover:text-rose-500 dark:bg-zinc-900 dark:border-zinc-800'
           }`}
         >
           <Heart className={`h-4 w-4 ${isFav ? 'fill-current' : ''}`} />

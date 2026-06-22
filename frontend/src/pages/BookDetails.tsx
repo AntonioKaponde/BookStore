@@ -140,7 +140,7 @@ export default function BookDetails() {
     <div className="py-6 md:py-10 space-y-12" id="bookverse-bookdetails-route">
       
       {/* 1. BREADCRUMBS PATH */}
-      <div className="flex items-center gap-1.5 text-xs text-zinc-440 font-semibold font-mono uppercase tracking-wider">
+      <div className="flex items-center gap-1.5 text-xs text-zinc- font-semibold font-mono uppercase tracking-wider">
         <Link to="/" className="hover:text-blue-600">Início</Link>
         <ChevronRight className="h-3.5 w-3.5" />
         <Link to="/catalog" className="hover:text-blue-600">Catálogo</Link>
@@ -183,7 +183,7 @@ export default function BookDetails() {
 
           <button
             onClick={() => setIsPreviewOpen(true)}
-            className="mt-6 flex items-center justify-center gap-1.5 rounded-xl border border-zinc-250 py-2.5 px-6 font-bold text-xs hover:bg-zinc-50 w-full max-w-sm dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer text-zinc-905 dark:text-zinc-50"
+            className="mt-6 flex items-center justify-center gap-1.5 rounded-xl border border-zinc-300 py-2.5 px-6 font-bold text-xs hover:bg-zinc-50 w-full max-w-sm dark:border-zinc-800 dark:bg-zinc-900 cursor-pointer text-zinc-900 dark:text-zinc-50"
           >
             <Bookmark className="h-4 w-4 text-blue-500" /> Ler Amostra Grátis
           </button>
@@ -195,36 +195,36 @@ export default function BookDetails() {
             <span className="inline-flex items-center gap-1 rounded bg-blue-50 dark:bg-zinc-800 px-2.5 py-1 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-wide">
               {book.type === 'digital' ? 'eBook Digital Especial' : book.type === 'physical' ? 'Edição Física para Colecionador' : 'Combo Físico & Digital'}
             </span>
-            <h1 className="text-3xl font-extrabold text-zinc-909 sm:text-4xl dark:text-zinc-50 font-sans">
+            <h1 className="text-3xl font-extrabold text-zinc-900 sm:text-4xl dark:text-zinc-50 font-sans">
               {book.title}
             </h1>
-            <p className="text-sm text-zinc-550 dark:text-zinc-400">
-              por <span className="font-semibold text-blue-650 dark:text-blue-400">{author?.name || book.authorId}</span>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              por <span className="font-semibold text-blue-700 dark:text-blue-400">{author?.name || book.authorId}</span>
             </p>
             <div className="flex items-center gap-1.5 pt-1">
               <RatingComponent rating={book.rating} size="sm" reviewsCount={bookReviews.length} />
-              <span className="text-xs text-zinc-405 font-medium font-mono">| {book.pages} páginas</span>
+              <span className="text-xs text-zinc-400 font-medium font-mono">| {book.pages} páginas</span>
             </div>
           </div>
 
           {/* Book Format selection layout */}
-          <div className="rounded-2xl border border-zinc-150 p-5 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-805 space-y-4">
-            <h3 className="text-xs font-bold text-zinc-440 uppercase tracking-widest font-mono">Escolha o Canal / Formato</h3>
+          <div className="rounded-2xl border border-zinc-200 p-5 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-800 space-y-4">
+            <h3 className="text-xs font-bold text-zinc- uppercase tracking-widest font-mono">Escolha o Canal / Formato</h3>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               {book.formats.includes('physical') && (
                 <button
                   onClick={() => setSelectedFormat('physical')}
                   className={`flex flex-col rounded-xl border p-4 text-left transition ${
                     selectedFormat === 'physical'
-                      ? 'border-blue-600 bg-blue-50/20 dark:bg-blue-955/20 shadow-inner'
+                      ? 'border-blue-600 bg-blue-50/20 dark:bg-blue-950/20 shadow-inner'
                       : 'border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900 hover:bg-zinc-50'
                   }`}
                 >
-                  <div className="flex items-center gap-2 text-zinc-850 dark:text-zinc-100 font-bold text-sm">
+                  <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-bold text-sm">
                     <Layers className="h-4 w-4 text-blue-600" /> Livro Físico
                   </div>
                   <span className="text-xs text-zinc-500 mt-1 leading-relaxed">Encadernação premium de alta qualidade e com capa protetora.</span>
-                  <span className="text-sm font-black text-zinc-909 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
+                  <span className="text-sm font-black text-zinc-900 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
                 </button>
               )}
               {book.formats.includes('pdf') && (
@@ -232,15 +232,15 @@ export default function BookDetails() {
                   onClick={() => setSelectedFormat('pdf')}
                   className={`flex flex-col rounded-xl border p-4 text-left transition ${
                     selectedFormat === 'pdf'
-                      ? 'border-blue-500 bg-blue-50/20 dark:bg-blue-955/20'
-                      : 'border-zinc-200 bg-white dark:border-zinc-850 dark:bg-zinc-900 hover:bg-zinc-50'
+                      ? 'border-blue-500 bg-blue-50/20 dark:bg-blue-950/20'
+                      : 'border-zinc-200 bg-white dark:border-zinc-900 dark:bg-zinc-900 hover:bg-zinc-50'
                   }`}
                 >
-                  <div className="flex items-center gap-2 text-zinc-850 dark:text-zinc-100 font-bold text-sm">
+                  <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-bold text-sm">
                     <FileText className="h-4 w-4 text-rose-500" /> Baixar PDF
                   </div>
                   <span className="text-xs text-zinc-500 mt-1">Arquivos vetoriais em alta fidelidade. Otimizado para telas e tablets.</span>
-                  <span className="text-sm font-black text-zinc-909 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
+                  <span className="text-sm font-black text-zinc-900 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
                 </button>
               )}
               {book.formats.includes('epub') && (
@@ -248,15 +248,15 @@ export default function BookDetails() {
                   onClick={() => setSelectedFormat('epub')}
                   className={`flex flex-col rounded-xl border p-4 text-left transition ${
                     selectedFormat === 'epub'
-                      ? 'border-blue-500 bg-blue-50/20 dark:bg-blue-955/20'
-                      : 'border-zinc-200 bg-white dark:border-zinc-850 dark:bg-zinc-900 hover:bg-zinc-50'
+                      ? 'border-blue-500 bg-blue-50/20 dark:bg-blue-950/20'
+                      : 'border-zinc-200 bg-white dark:border-zinc-900 dark:bg-zinc-900 hover:bg-zinc-50'
                   }`}
                 >
-                  <div className="flex items-center gap-2 text-zinc-850 dark:text-zinc-100 font-bold text-sm">
-                    <BookOpen className="h-4 w-4 text-emerald-505" /> eBook EPUB
+                  <div className="flex items-center gap-2 text-zinc-900 dark:text-zinc-100 font-bold text-sm">
+                    <BookOpen className="h-4 w-4 text-emerald-500" /> eBook EPUB
                   </div>
                   <span className="text-xs text-zinc-500 mt-1">Padrão digital fluído. Ajustável para e-readers e leitores de ePub.</span>
-                  <span className="text-sm font-black text-zinc-909 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
+                  <span className="text-sm font-black text-zinc-900 mt-3 dark:text-zinc-100 font-mono">Kz {book.price.toLocaleString('pt-AO')}</span>
                 </button>
               )}
             </div>
@@ -290,23 +290,23 @@ export default function BookDetails() {
               className={`rounded-xl border p-3.5 transition shrink-0 ${
                 isFav
                   ? 'border-rose-100 bg-rose-50 text-rose-600 dark:bg-rose-950/20 dark:border-rose-900'
-                  : 'border-zinc-250 hover:bg-zinc-50 dark:border-zinc-800'
+                  : 'border-zinc-300 hover:bg-zinc-50 dark:border-zinc-800'
               }`}
             >
               <Heart className={`h-5 w-5 ${isFav ? 'fill-current' : ''}`} />
             </button>
           </div>
 
-          <p className="text-xs text-zinc-405 leading-relaxed bg-zinc-50 dark:bg-zinc-955/20 rounded-xl p-3 border border-zinc-150 dark:border-zinc-805">
+          <p className="text-xs text-zinc-400 leading-relaxed bg-zinc-50 dark:bg-zinc-950/20 rounded-xl p-3 border border-zinc-200 dark:border-zinc-800">
             <strong>Garantia de Entrega Livraria Mulemba:</strong> Todos os formatos digitais (EPUB, PDF) ficam disponíveis em sua Biblioteca Digital imediatamente após a compra. Livros físicos são embalados em atmosfera controlada com rastreamento ativo de ponta a ponta.
           </p>
 
           {/* SELLER REAL CONNECTION BOX */}
           {book.sellerName && (
-            <div className="rounded-2xl border border-zinc-200/80 p-5 bg-blue-50/10 dark:bg-zinc-950/40 dark:border-zinc-805 space-y-3.5 text-left text-xs animate-fade-in">
-              <div className="flex items-center justify-between border-b pb-2 dark:border-zinc-805">
+            <div className="rounded-2xl border border-zinc-200/80 p-5 bg-blue-50/10 dark:bg-zinc-950/40 dark:border-zinc-800 space-y-3.5 text-left text-xs animate-fade-in">
+              <div className="flex items-center justify-between border-b pb-2 dark:border-zinc-800">
                 <span className="font-bold text-zinc-500 dark:text-zinc-400 flex items-center gap-1.5 font-mono uppercase text-[10px] tracking-wider">
-                  <Info className="h-4 w-4 text-blue-550" /> Origem e Vendedor
+                  <Info className="h-4 w-4 text-blue-600" /> Origem e Vendedor
                 </span>
                 <span className="text-[10px] font-bold uppercase tracking-wide bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full dark:bg-zinc-800 dark:text-blue-400">
                   {book.sellerType === 'bookstore' ? 'Livraria' : book.sellerType === 'publisher' ? 'Editora' : book.sellerType === 'author' ? 'Autor' : 'Usado / Brechó'}
@@ -328,7 +328,7 @@ export default function BookDetails() {
                       </span>
                     </div>
                     {book.conditionNotes && (
-                      <p className="text-[11px] text-zinc-650 leading-relaxed italic mt-0.5 dark:text-zinc-400">"{book.conditionNotes}"</p>
+                      <p className="text-[11px] text-zinc-700 leading-relaxed italic mt-0.5 dark:text-zinc-400">"{book.conditionNotes}"</p>
                     )}
                   </div>
                 )}
@@ -357,29 +357,29 @@ export default function BookDetails() {
       </div>
 
       {/* 3. EXTENDED TAB DESCRIPTION AND AUTHOR BIOGRAPHY */}
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 pt-6 border-t border-zinc-150 dark:border-zinc-805">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3 pt-6 border-t border-zinc-200 dark:border-zinc-800">
         <div className="md:col-span-2 space-y-4 text-left">
           <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Sinopse da Obra</h3>
-          <p className="text-sm text-zinc-650 dark:text-zinc-350 leading-relaxed whitespace-pre-line">
+          <p className="text-sm text-zinc-700 dark:text-zinc-400 leading-relaxed whitespace-pre-line">
             {book.description}
             
             {"\n\n"}
             Esta publicação especial representa um rigoroso padrão de curadoria literária. Ao longo das páginas, o leitor descobrirá narrativas envolventes e análises aprofundadas projetadas para inspirar e cativar sua atenção. Todos os capítulos contam com diagramações fluidas e de altíssimo acabamento.
           </p>
           <div className="grid grid-cols-2 gap-4 pt-4 text-xs font-mono">
-            <div className="bg-zinc-100/60 dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-805 p-3.5 rounded-xl">
-              <span className="text-zinc-405 block uppercase tracking-wider font-semibold">Distribuidora / Selo</span>
-              <span className="text-zinc-850 dark:text-zinc-100 mt-1 block font-bold">{book.publisher || 'Editora Mulemba'}</span>
+            <div className="bg-zinc-100/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-3.5 rounded-xl">
+              <span className="text-zinc-400 block uppercase tracking-wider font-semibold">Distribuidora / Selo</span>
+              <span className="text-zinc-900 dark:text-zinc-100 mt-1 block font-bold">{book.publisher || 'Editora Mulemba'}</span>
             </div>
-            <div className="bg-zinc-100/60 dark:bg-zinc-900/40 border border-zinc-150 dark:border-zinc-805 p-3.5 rounded-xl">
-              <span className="text-zinc-440 block uppercase tracking-wider font-semibold">Data de Lançamento</span>
-              <span className="text-zinc-850 dark:text-zinc-100 mt-1 block font-bold">{book.publishedDate}</span>
+            <div className="bg-zinc-100/60 dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 p-3.5 rounded-xl">
+              <span className="text-zinc- block uppercase tracking-wider font-semibold">Data de Lançamento</span>
+              <span className="text-zinc-900 dark:text-zinc-100 mt-1 block font-bold">{book.publishedDate}</span>
             </div>
           </div>
         </div>
 
         {/* AUTHOR BIO CARD */}
-        <div className="md:col-span-1 rounded-2xl border border-zinc-150 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-800 space-y-4">
+        <div className="md:col-span-1 rounded-2xl border border-zinc-200 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-800 space-y-4">
           <div className="flex items-center gap-3.5 pb-3 border-b border-zinc-100 dark:border-zinc-800">
             <img
               src={author?.avatar}
@@ -388,43 +388,43 @@ export default function BookDetails() {
               referrerPolicy="no-referrer"
             />
             <div>
-              <h4 className="font-bold text-sm text-zinc-909 dark:text-zinc-105">{author?.name || book.authorId}</h4>
-              <p className="text-xs text-zinc-440 font-mono mt-0.5">{author?.booksCount || 1} Obras Publicadas</p>
+              <h4 className="font-bold text-sm text-zinc-900 dark:text-zinc-100">{author?.name || book.authorId}</h4>
+              <p className="text-xs text-zinc- font-mono mt-0.5">{author?.booksCount || 1} Obras Publicadas</p>
             </div>
           </div>
-          <p className="text-xs text-zinc-505 leading-relaxed">
+          <p className="text-xs text-zinc-500 leading-relaxed">
             {author?.bio}
           </p>
         </div>
       </div>
 
       {/* 4. CUSTOMER REVIEWS FOR THIS PRODUCT */}
-      <section className="space-y-6 pt-6 border-t border-zinc-150 dark:border-zinc-800">
-        <h3 className="text-lg font-bold text-zinc-905 dark:text-zinc-50">Avaliações dos Leitores ({bookReviews.length})</h3>
+      <section className="space-y-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
+        <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Avaliações dos Leitores ({bookReviews.length})</h3>
         
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3">
           {/* Write a review module */}
-          <div className="rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
+          <div className="rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
             <h4 className="text-sm font-bold text-zinc-900 dark:text-zinc-100">Deixe sua avaliação</h4>
             <form onSubmit={handlePostReview} className="space-y-3.5">
               <div>
-                <label className="text-xs text-zinc-405 font-bold uppercase tracking-wide font-mono block mb-1">Escolha a nota</label>
+                <label className="text-xs text-zinc-400 font-bold uppercase tracking-wide font-mono block mb-1">Escolha a nota</label>
                 <RatingComponent rating={newRating} size="sm" interactive={true} onChange={setNewRating} />
               </div>
               <div>
-                <label className="text-xs text-zinc-405 font-bold uppercase tracking-wide font-mono block mb-1">Seu comentário</label>
+                <label className="text-xs text-zinc-400 font-bold uppercase tracking-wide font-mono block mb-1">Seu comentário</label>
                 <textarea
                   required
                   rows={3}
                   value={comment}
                   onChange={(e) => setComment(e.target.value)}
                   placeholder="Escreva sua opinião honesta sobre a obra..."
-                  className="w-full rounded-xl border border-zinc-250 bg-white p-3 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-955 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white p-3 text-xs outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
               <button
                 type="submit"
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-650 hover:bg-blue-700 py-2.5 text-xs font-bold text-white shadow-sm font-sans"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-blue-700 hover:bg-blue-700 py-2.5 text-xs font-bold text-white shadow-sm font-sans"
               >
                 <Send className="h-3.5 w-3.5" /> Enviar Avaliação
               </button>
@@ -445,18 +445,18 @@ export default function BookDetails() {
                       />
                       <div>
                         <h4 className="font-bold text-xs text-zinc-900 dark:text-zinc-100">{rev.userName}</h4>
-                        <span className="text-[10px] text-zinc-404 font-mono block mt-0.5">{rev.date}</span>
+                        <span className="text-[10px] text-zinc-400 font-mono block mt-0.5">{rev.date}</span>
                       </div>
                     </div>
                     <RatingComponent rating={rev.rating} size="xs" />
                   </div>
-                  <p className="text-xs text-zinc-650 dark:text-zinc-350 leading-relaxed italic">
+                  <p className="text-xs text-zinc-700 dark:text-zinc-400 leading-relaxed italic">
                     "{rev.comment}"
                   </p>
                 </div>
               ))
             ) : (
-              <div className="rounded-2xl border border-dashed p-10 text-center text-zinc-435 dark:border-zinc-800">
+              <div className="rounded-2xl border border-dashed p-10 text-center text-zinc-430 dark:border-zinc-800">
                 Seja o primeiro leitor a avaliar e deixar um comentário sobre "{book.title}"!
               </div>
             )}
@@ -466,10 +466,10 @@ export default function BookDetails() {
 
       {/* 5. RELATED BOOKS RECOMMENDATIONS */}
       {relatedBooks.length > 0 && (
-        <section className="space-y-6 pt-6 border-t border-zinc-150 dark:border-zinc-800">
+        <section className="space-y-6 pt-6 border-t border-zinc-200 dark:border-zinc-800">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-50">Obras Relacionadas</h3>
-            <span className="text-xs text-zinc-440 font-mono tracking-widest uppercase">Mesma Categoria</span>
+            <span className="text-xs text-zinc- font-mono tracking-widest uppercase">Mesma Categoria</span>
           </div>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 animate-fade-in">
             {relatedBooks.map((relBook) => (
@@ -487,7 +487,7 @@ export default function BookDetails() {
         size="lg"
       >
         <div className="space-y-5 select-none font-serif leading-relaxed text-zinc-800 dark:text-zinc-200 antialiased p-2">
-          <p className="text-xs uppercase tracking-widest font-mono text-zinc-440 border-b pb-1.5 mb-4">Capítulo 1: O Começo de Tudo</p>
+          <p className="text-xs uppercase tracking-widest font-mono text-zinc- border-b pb-1.5 mb-4">Capítulo 1: O Começo de Tudo</p>
           <p className="first-letter:text-4xl first-letter:font-bold first-letter:float-left first-letter:mr-2 text-sm">
             Os ventos marítimos frios do início de novembro carregavam uma névoa salgada e úmida sobre as velhas docas de madeira de Sterling Inlet. Por quarenta anos, a cápsula metálica permaneceu intocada sob as vigas apodrecidas do píer seis, silenciosa e pesadamente coberta por camadas de óxido.
           </p>
@@ -497,7 +497,7 @@ export default function BookDetails() {
           <p className="text-sm">
             "Alinhamento de escala concluído", murmurou, deslizando os dedos enluvados sobre a tela. Ele sabia o que esses valores significavam. Esses códigos datavam dos setores divididos das operações do laboratório de Berlim. Que as respostas comecem a surgir, ele pensou.
           </p>
-          <div className="bg-amber-50/50 dark:bg-zinc-850 p-4 rounded-xl border border-dashed border-amber-300 dark:border-zinc-700 text-center font-mono text-xs text-zinc-500 mt-6 select-text">
+          <div className="bg-amber-50/50 dark:bg-zinc-900 p-4 rounded-xl border border-dashed border-amber-300 dark:border-zinc-700 text-center font-mono text-xs text-zinc-500 mt-6 select-text">
             🌟 Fim da demonstração gratuita! Adicione "{book.title}" ({selectedFormat.toUpperCase()}) ao seu carrinho de compras para continuar a ler os capítulos restantes.
           </div>
         </div>

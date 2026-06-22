@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { PixelService } from '../services/PixelService';
+import { analyticsService } from '../services/analyticsService';
 import { useCartStore } from '../store/useCartStore';
 import { useBookStore } from '../store/useBookStore';
 import { useAuthStore } from '../store/useAuthStore';
@@ -78,11 +78,15 @@ export default function CheckoutPage() {
       });
 
       // TRACK PURCHASE EVENT
-      PixelService.track('purchase', {
-        orderId: order.id,
-        total,
-        currency: 'AOA',
-        items: items.length
+      analyticsService.trackEvent({
+        eventType: 'CHECKOUT_COMPLETE',
+        pageUrl: window.location.pathname,
+        additionalData: JSON.stringify({
+          orderId: order.id,
+          total,
+          currency: 'AOA',
+          items: items.length
+        })
       });
 
       clearCart();
@@ -121,9 +125,9 @@ export default function CheckoutPage() {
         <span className="text-zinc-500">Sessão de Finalização</span>
       </div>
 
-      <div className="border-b border-zinc-150 pb-5 dark:border-zinc-800">
-        <span className="text-xs font-extrabold uppercase tracking-widest text-blue-605 dark:text-blue-400 font-mono font-bold">Validação do Pedido</span>
-        <h1 className="text-3xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Finalização de Compra</h1>
+      <div className="border-b border-zinc-200 pb-5 dark:border-zinc-800">
+        <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 font-mono font-bold">Validação do Pedido</span>
+        <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Finalização de Compra</h1>
         <p className="text-sm text-zinc-500 mt-1">Insira os dados corretos de entrega e pagamento eletrônico protegido.</p>
       </div>
 
@@ -133,7 +137,7 @@ export default function CheckoutPage() {
         <div className="lg:col-span-8 space-y-6">
           
           {/* SHIPPING PANEL COMPONENT */}
-          <div className="rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
+          <div className="rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
               <Truck className="h-5 w-5 text-blue-600 animate-pulse" /> 1. Endereço e Destino de Entrega
             </h3>
@@ -147,7 +151,7 @@ export default function CheckoutPage() {
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   placeholder="Seu nome completo"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -159,7 +163,7 @@ export default function CheckoutPage() {
                   value={street}
                   onChange={(e) => setStreet(e.target.value)}
                   placeholder="Rua Conselheiro Júlio de Vilhena, nº 10"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -171,7 +175,7 @@ export default function CheckoutPage() {
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   placeholder="Luanda"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -182,7 +186,7 @@ export default function CheckoutPage() {
                   value={state}
                   onChange={(e) => setState(e.target.value)}
                   placeholder="Luanda"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -196,7 +200,7 @@ export default function CheckoutPage() {
                   placeholder="0000"
                   pattern="^[\d\-A-Z]{4,10}$"
                   maxLength={10}
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -208,7 +212,7 @@ export default function CheckoutPage() {
                   value={country}
                   onChange={(e) => setCountry(e.target.value)}
                   placeholder="Angola"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
 
@@ -220,7 +224,7 @@ export default function CheckoutPage() {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+244 923 456 789"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
             </div>
@@ -233,14 +237,14 @@ export default function CheckoutPage() {
                 onChange={(e) => setBillingMatch(e.target.checked)}
                 className="rounded text-blue-600 h-4 w-4 cursor-pointer accent-blue-600"
               />
-              <label htmlFor="billing-check" className="text-xs text-zinc-505 dark:text-zinc-400 cursor-pointer select-none">
+              <label htmlFor="billing-check" className="text-xs text-zinc-500 dark:text-zinc-400 cursor-pointer select-none">
                 Endereço de cobrança idêntico ao endereço de entrega
               </label>
             </div>
           </div>
 
           {/* PAYMENT COMPONENT CONTAINER */}
-          <div className="rounded-2xl border border-zinc-150 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4">
+          <div className="rounded-2xl border border-zinc-200 p-6 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4">
             <h3 className="text-sm font-bold text-zinc-900 dark:text-zinc-50 flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-blue-600" /> 2. Autorização de Pagamento Protegida
             </h3>
@@ -258,8 +262,8 @@ export default function CheckoutPage() {
                   onClick={() => setPaymentMethod(opt.id as any)}
                   className={`py-2 rounded-xl text-xs font-semibold border transition ${
                     paymentMethod === opt.id
-                      ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:bg-blue-955/20'
-                      : 'border-zinc-200 hover:bg-zinc-50 text-zinc-650 dark:border-zinc-805 dark:hover:bg-zinc-850'
+                      ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:bg-blue-950/20'
+                      : 'border-zinc-200 hover:bg-zinc-50 text-zinc-700 dark:border-zinc-800 dark:hover:bg-zinc-900'
                   }`}
                 >
                   {opt.label}
@@ -271,7 +275,7 @@ export default function CheckoutPage() {
             {paymentMethod === 'card' ? (
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-3 pt-2">
                 <div className="sm:col-span-3">
-                  <label className="text-xs text-zinc-440 font-bold font-mono uppercase block mb-1">Número do Cartão</label>
+                  <label className="text-xs text-zinc- font-bold font-mono uppercase block mb-1">Número do Cartão</label>
                   <input
                     type="text"
                     required
@@ -281,11 +285,11 @@ export default function CheckoutPage() {
                     pattern="[\d ]{16,19}"
                     maxLength={19}
                     title="Insira os 16 dígitos do seu cartão"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
                 <div className="sm:col-span-2">
-                  <label className="text-xs text-zinc-440 font-bold font-mono uppercase block mb-1">Validade MM/AA</label>
+                  <label className="text-xs text-zinc- font-bold font-mono uppercase block mb-1">Validade MM/AA</label>
                   <input
                     type="text"
                     required
@@ -295,11 +299,11 @@ export default function CheckoutPage() {
                     pattern="(0[1-9]|1[0-2])\/[0-9]{2}"
                     maxLength={5}
                     title="Formato: MM/AA"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
                 <div>
-                  <label className="text-xs text-zinc-440 font-bold font-mono uppercase block mb-1">Código CVC</label>
+                  <label className="text-xs text-zinc- font-bold font-mono uppercase block mb-1">Código CVC</label>
                   <input
                     type="text"
                     required
@@ -309,12 +313,12 @@ export default function CheckoutPage() {
                     pattern="[0-9]{3,4}"
                     maxLength={4}
                     title="Código de 3 ou 4 dígitos"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3.5 py-2.5 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
                 </div>
               </div>
             ) : (
-              <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-150 text-center text-xs dark:bg-zinc-955/20 dark:border-zinc-805 text-zinc-550 dark:text-zinc-400">
+              <div className="p-4 rounded-xl bg-zinc-50 border border-zinc-200 text-center text-xs dark:bg-zinc-950/20 dark:border-zinc-800 text-zinc-600 dark:text-zinc-400">
                 Você será redirecionado para a autenticação externa segura correspondente ao finalizar.
               </div>
             )}
@@ -325,7 +329,7 @@ export default function CheckoutPage() {
         {/* ITEMS & SECURED FINAL PAYMENT SUMMARY COLUMN */}
         <div className="lg:col-span-4 space-y-4">
           
-          <div className="rounded-2xl border border-zinc-150 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-805 space-y-6">
+          <div className="rounded-2xl border border-zinc-200 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-800 space-y-6">
             <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50 border-b pb-1.5 flex items-center gap-1.5">
                Revisão da Compra ({items.length} itens)
             </h3>
@@ -344,13 +348,13 @@ export default function CheckoutPage() {
                       </div>
                     )}
                     <div className="overflow-hidden">
-                      <h5 className="font-bold text-xs text-zinc-901 truncate">{i.book.title}</h5>
-                      <span className="text-[9px] font-semibold text-zinc-405 dark:text-zinc-400 tracking-wider">
+                      <h5 className="font-bold text-xs text-zinc-900 truncate">{i.book.title}</h5>
+                      <span className="text-[9px] font-semibold text-zinc-400 dark:text-zinc-400 tracking-wider">
                         {i.quantity} x {i.selectedFormat === 'physical' ? 'Físico' : i.selectedFormat.toUpperCase()}
                       </span>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold font-mono text-zinc-850 dark:text-zinc-100">
+                  <span className="text-xs font-semibold font-mono text-zinc-900 dark:text-zinc-100">
                     Kz {(i.book.price * i.quantity).toLocaleString('pt-AO')}
                   </span>
                 </div>
@@ -358,7 +362,7 @@ export default function CheckoutPage() {
             </div>
 
             {/* Break-down numbers */}
-            <div className="space-y-3.5 text-xs text-zinc-505 dark:text-zinc-410 font-bold border-t pt-4 border-zinc-200 dark:border-zinc-800">
+            <div className="space-y-3.5 text-xs text-zinc-500 dark:text-zinc-410 font-bold border-t pt-4 border-zinc-200 dark:border-zinc-800">
               <div className="flex justify-between">
                 <span>Subtotal dos Itens</span>
                 <span className="font-mono text-zinc-800 dark:text-zinc-100">Kz {subtotal.toLocaleString('pt-AO')}</span>
@@ -371,11 +375,11 @@ export default function CheckoutPage() {
               )}
               <div className="flex justify-between">
                 <span>Serviço de Frete</span>
-                <span className="font-mono text-zinc-800 dark:text-zinc-105">Kz {shippingCharge.toLocaleString('pt-AO')}</span>
+                <span className="font-mono text-zinc-800 dark:text-zinc-100">Kz {shippingCharge.toLocaleString('pt-AO')}</span>
               </div>
               <div className="flex justify-between">
                 <span>Impostos Estimados</span>
-                <span className="font-mono text-zinc-800 dark:text-zinc-105">Kz {tax.toLocaleString('pt-AO')}</span>
+                <span className="font-mono text-zinc-800 dark:text-zinc-100">Kz {tax.toLocaleString('pt-AO')}</span>
               </div>
               <div className="flex justify-between text-base font-black text-zinc-900 dark:text-zinc-50 border-t pt-3.5 dark:border-zinc-800">
                 <span>Valor Total</span>
@@ -405,7 +409,7 @@ export default function CheckoutPage() {
             </button>
           </div>
 
-          <div className="flex items-center justify-center gap-1.5 text-zinc-440 text-[9px] font-bold font-mono uppercase bg-zinc-100/30 p-2.5 rounded-xl dark:bg-zinc-950/20">
+          <div className="flex items-center justify-center gap-1.5 text-zinc- text-[9px] font-bold font-mono uppercase bg-zinc-100/30 p-2.5 rounded-xl dark:bg-zinc-950/20">
             <Sparkles className="h-4 w-4 text-amber-500" /> Transação Criptografada Ponta a Ponta
           </div>
         </div>

@@ -153,11 +153,11 @@ export default function DigitalLibrary() {
     <div className="py-6 md:py-10 space-y-8" id="bookverse-digitallibrary">
       
       {/* HEADER ROW */}
-      <div className="border-b border-zinc-150 pb-5 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="border-b border-zinc-200 pb-5 dark:border-zinc-800 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <span className="text-xs font-extrabold uppercase tracking-widest text-blue-606 dark:text-blue-400 font-mono font-bold">Meu Espaço Digital</span>
-          <h1 className="text-3xl font-bold text-zinc-909 dark:text-zinc-50 mt-1">Minha Biblioteca Digital</h1>
-          <p className="text-sm text-zinc-550 mt-1">Continue lendo e-books salvos em formato ePUB ou consulte PDFs.</p>
+          <span className="text-xs font-extrabold uppercase tracking-widest text-blue-600 dark:text-blue-400 font-mono font-bold">Meu Espaço Digital</span>
+          <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-50 mt-1">Minha Biblioteca Digital</h1>
+          <p className="text-sm text-zinc-600 mt-1">Continue lendo e-books salvos em formato ePUB ou consulte PDFs.</p>
         </div>
 
         {/* Reading Streak Indicator */}
@@ -174,7 +174,7 @@ export default function DigitalLibrary() {
       {continueBook && (
         <section className="rounded-3xl border border-blue-100 bg-blue-50/20 dark:border-blue-900/40 p-6 md:p-8 grid grid-cols-1 gap-6 md:grid-cols-12 md:items-center" id="panel-continue-reading">
           <div className="md:col-span-8 space-y-4">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-600/15 px-3 py-1 text-xs font-bold text-blue-606 dark:text-blue-400 uppercase tracking-widest font-mono">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-600/15 px-3 py-1 text-xs font-bold text-blue-600 dark:text-blue-400 uppercase tracking-widest font-mono">
               <Flame className="h-3 w-3 animate-spin-slow" /> Continuar Lendo Sessão Recente
             </span>
             <h2 className="text-2xl font-black text-zinc-900 dark:text-zinc-50 font-sans leading-tight">
@@ -184,7 +184,7 @@ export default function DigitalLibrary() {
             
             {/* Range value sliders progress */}
             <div className="space-y-2 max-w-md">
-              <div className="flex justify-between text-xs font-mono font-bold text-zinc-650 dark:text-zinc-400 font-bold">
+              <div className="flex justify-between text-xs font-mono font-bold text-zinc-700 dark:text-zinc-400 font-bold">
                 <span>Progresso de Leitura</span>
                 <span>{continueReadingItem.progress}% lido</span>
               </div>
@@ -202,7 +202,7 @@ export default function DigitalLibrary() {
             <div className="pt-2 flex flex-wrap gap-2.5">
               <button
                 onClick={() => handleOpenReader(continueBook.id, continueReadingItem.progress)}
-                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-blue-650 hover:bg-blue-750 text-white font-bold text-xs px-5 py-2.5 shadow cursor-pointer transition select-none"
+                className="inline-flex items-center justify-center gap-1.5 rounded-xl bg-blue-700 hover:bg-blue-800 text-white font-bold text-xs px-5 py-2.5 shadow cursor-pointer transition select-none"
               >
                 <Play className="h-4 w-4 fill-current" /> Abrir Leitor Digital
               </button>
@@ -242,7 +242,7 @@ export default function DigitalLibrary() {
             return (
               <div
                 key={item.bookId}
-                className="rounded-2xl border border-zinc-150 p-5 bg-white dark:bg-zinc-900 dark:border-zinc-805 space-y-4"
+                className="rounded-2xl border border-zinc-200 p-5 bg-white dark:bg-zinc-900 dark:border-zinc-800 space-y-4"
               >
                 <div className="flex items-start gap-4 justify-between">
                   <div className="flex items-center gap-3 overflow-hidden flex-1 select-none">
@@ -255,8 +255,8 @@ export default function DigitalLibrary() {
                       </div>
                     )}
                     <div className="overflow-hidden">
-                      <h4 className="font-bold text-xs text-zinc-901 dark:text-zinc-50 truncate">{b.title}</h4>
-                      <span className="text-[10px] text-zinc-440 font-mono block mt-0.5 uppercase tracking-wide font-semibold">{item.format.toUpperCase()} Padrão</span>
+                      <h4 className="font-bold text-xs text-zinc-900 dark:text-zinc-50 truncate">{b.title}</h4>
+                      <span className="text-[10px] text-zinc- font-mono block mt-0.5 uppercase tracking-wide font-semibold">{item.format.toUpperCase()} Padrão</span>
                     </div>
                   </div>
 
@@ -264,12 +264,12 @@ export default function DigitalLibrary() {
 
                 {/* Progress Indicators */}
                 <div className="space-y-1.5 pt-2">
-                  <div className="flex justify-between items-center text-[10px] font-bold font-mono text-zinc-451">
+                  <div className="flex justify-between items-center text-[10px] font-bold font-mono text-zinc-450">
                     <span>Progresso de Leitura</span>
                     <span>{item.progress}%</span>
                   </div>
                   <div className="w-full bg-zinc-100 h-1 rounded-full dark:bg-zinc-800 overflow-hidden">
-                    <div className="bg-blue-650 h-full rounded-full" style={{ width: `${item.progress}%` }} />
+                    <div className="bg-blue-700 h-full rounded-full" style={{ width: `${item.progress}%` }} />
                   </div>
                   <input
                     type="range"
@@ -284,7 +284,7 @@ export default function DigitalLibrary() {
                 {/* Open interaction */}
                 <button
                   onClick={() => handleOpenReader(b.id, item.progress)}
-                  className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-zinc-50 border border-zinc-150 py-2 text-xs font-bold text-zinc-705 dark:bg-zinc-850 dark:border-zinc-800 dark:text-zinc-300 hover:bg-blue-600 hover:text-white transition cursor-pointer select-none"
+                  className="w-full flex items-center justify-center gap-1.5 rounded-xl bg-zinc-50 border border-zinc-200 py-2 text-xs font-bold text-zinc-700 dark:bg-zinc-900 dark:border-zinc-800 dark:text-zinc-300 hover:bg-blue-600 hover:text-white transition cursor-pointer select-none"
                 >
                   <Play className="h-3 w-3 fill-current" /> Abrir no Leitor
                 </button>
@@ -295,25 +295,25 @@ export default function DigitalLibrary() {
       </section>
 
       {/* 4. HISTORIC LOG Reading log timeline */}
-      <section className="rounded-3xl border border-zinc-150 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-805 space-y-4">
-        <h3 className="text-base font-bold text-zinc-904 dark:text-zinc-50">Histórico de Leitura do Aparelho</h3>
+      <section className="rounded-3xl border border-zinc-200 p-6 bg-zinc-50/50 dark:bg-zinc-950/20 dark:border-zinc-800 space-y-4">
+        <h3 className="text-base font-bold text-zinc-900 dark:text-zinc-50">Histórico de Leitura do Aparelho</h3>
         
         <div className="space-y-4">
-          <div className="flex items-start gap-3 text-xs border-b pb-3 border-zinc-100 dark:border-zinc-805">
+          <div className="flex items-start gap-3 text-xs border-b pb-3 border-zinc-100 dark:border-zinc-800">
             <span className="font-mono text-[10px] bg-blue-100 text-blue-700 font-bold px-2 py-0.5 rounded uppercase leading-none mt-0.5">Hoje</span>
-            <p className="text-zinc-650 dark:text-zinc-350">
+            <p className="text-zinc-700 dark:text-zinc-400">
               Leu <strong>15 páginas</strong> de <strong>Mindfulness & Reconfiguração Mental</strong>. Foco atingido: 42 minutos.
             </p>
           </div>
-          <div className="flex items-start gap-3 text-xs border-b pb-3 border-zinc-100 dark:border-zinc-805">
+          <div className="flex items-start gap-3 text-xs border-b pb-3 border-zinc-100 dark:border-zinc-800">
             <span className="font-mono text-[10px] bg-zinc-200 text-zinc-700 font-bold px-2 py-0.5 rounded uppercase leading-none mt-0.5">Ontem</span>
-            <p className="text-zinc-650 dark:text-zinc-350">
+            <p className="text-zinc-700 dark:text-zinc-400">
               Leu <strong>28 páginas</strong> do livro <strong>Sinapse Cognitiva & Algoritmos</strong>. Cache carregado localmente.
             </p>
           </div>
           <div className="flex items-start gap-3 text-xs pb-1">
             <span className="font-mono text-[10px] bg-zinc-200 text-zinc-700 font-bold px-2 py-0.5 rounded uppercase leading-none mt-0.5">28 de Maio</span>
-            <p className="text-zinc-650 dark:text-zinc-350">
+            <p className="text-zinc-700 dark:text-zinc-400">
               Sincronização automática das anotações salvas em seus dispositivos para backup geral em Cloud.
             </p>
           </div>

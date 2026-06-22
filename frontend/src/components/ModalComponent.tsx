@@ -64,14 +64,14 @@ export default function ModalComponent({
               </h3>
               <button
                 onClick={onClose}
-                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-50 hover:text-zinc-650 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transition-colors"
+                className="rounded-lg p-1.5 text-zinc-400 hover:bg-zinc-50 hover:text-zinc-700 dark:hover:bg-zinc-800 dark:hover:text-zinc-200 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Content Body */}
-            <div className="flex-1 overflow-y-auto p-6 text-sm text-zinc-600 dark:text-zinc-350">
+            <div className="flex-1 overflow-y-auto p-6 text-sm text-zinc-600 dark:text-zinc-400">
               {children}
             </div>
           </motion.div>

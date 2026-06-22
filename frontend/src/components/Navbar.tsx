@@ -50,7 +50,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-40 border-b border-zinc-150 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/95" id="bookverse-main-navbar">
+    <nav className="sticky top-0 z-40 border-b border-zinc-200 bg-white/90 backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/95" id="bookverse-main-navbar">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4">
           
@@ -77,8 +77,8 @@ export default function Navbar() {
               to="/"
               className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                 isActive('/')
-                  ? 'bg-zinc-50 text-blue-605 dark:bg-zinc-800 dark:text-blue-400'
-                  : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-355 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                  ? 'bg-zinc-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400'
+                  : 'text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-350 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
               }`}
             >
               Início
@@ -87,8 +87,8 @@ export default function Navbar() {
               to="/catalog"
               className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                 isActive('/catalog')
-                  ? 'bg-zinc-50 text-blue-605 dark:bg-zinc-800 dark:text-blue-400'
-                  : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-350 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                  ? 'bg-zinc-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400'
+                  : 'text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
               }`}
             >
               Explorar Loja
@@ -99,8 +99,8 @@ export default function Navbar() {
                   to="/digital-library"
                   className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                     isActive('/digital-library')
-                      ? 'bg-zinc-50 text-blue-650 dark:bg-zinc-800 dark:text-blue-400'
-                      : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-350 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                      ? 'bg-zinc-50 text-blue-700 dark:bg-zinc-800 dark:text-blue-400'
+                      : 'text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                   }`}
                 >
                   Biblioteca Digital
@@ -109,8 +109,8 @@ export default function Navbar() {
                   to="/dashboard"
                   className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors ${
                     isActive('/dashboard')
-                      ? 'bg-zinc-50 text-blue-650 dark:bg-zinc-800 dark:text-blue-400'
-                      : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-350 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                      ? 'bg-zinc-50 text-blue-700 dark:bg-zinc-800 dark:text-blue-400'
+                      : 'text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                   }`}
                 >
                   Minha Conta
@@ -120,8 +120,8 @@ export default function Navbar() {
                     to="/admin"
                     className={`rounded-xl px-3.5 py-2 text-sm font-semibold transition-colors flex items-center gap-1.5 ${
                       isActive('/admin')
-                        ? 'bg-zinc-50 text-blue-650 dark:bg-zinc-800 dark:text-blue-405'
-                        : 'text-zinc-650 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-350 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
+                        ? 'bg-zinc-50 text-blue-700 dark:bg-zinc-800 dark:text-blue-400'
+                        : 'text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-800 dark:hover:text-zinc-100'
                     }`}
                   >
                     <Settings className="h-4 w-4 text-emerald-500" /> {user?.role === 'admin' ? 'Admin' : 'Painel de Vendas'}
@@ -187,16 +187,16 @@ export default function Navbar() {
                 </button>
                 {/* PROFILE DROPDOWN PANEL */}
                 {isProfileDropdownOpen && (
-                  <div className="absolute right-0 mt-2 z-50 w-56 origin-top-right rounded-2xl border border-zinc-150 bg-white/95 p-2 shadow-xl backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/95">
-                    <div className="px-3.5 py-3 border-b border-zinc-100 dark:border-zinc-805 mb-1">
+                  <div className="absolute right-0 mt-2 z-50 w-56 origin-top-right rounded-2xl border border-zinc-200 bg-white/95 p-2 shadow-xl backdrop-blur-md dark:border-zinc-800 dark:bg-zinc-900/95">
+                    <div className="px-3.5 py-3 border-b border-zinc-100 dark:border-zinc-800 mb-1">
                       <p className="text-xs font-semibold text-zinc-400 uppercase tracking-widest font-mono">Conta Conectada</p>
-                      <p className="text-sm font-bold text-zinc-905 dark:text-zinc-100 mt-1 truncate">{user?.name}</p>
+                      <p className="text-sm font-bold text-zinc-900 dark:text-zinc-100 mt-1 truncate">{user?.name}</p>
                       <p className="text-xs text-zinc-500 truncate mt-0.5">{user?.email}</p>
                       <div className="mt-2.5 flex items-center gap-1">
                         <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase font-mono ${
                           user?.role === 'admin' || user?.role === 'seller'
-                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-250 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900/40'
-                            : 'bg-blue-50 text-blue-700 border border-blue-250 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900/40'
+                            ? 'bg-emerald-50 text-emerald-700 border border-emerald-300 dark:bg-emerald-950/40 dark:text-emerald-400 dark:border-emerald-900/40'
+                            : 'bg-blue-50 text-blue-700 border border-blue-300 dark:bg-blue-950/40 dark:text-blue-400 dark:border-blue-900/40'
                         }`}>
                           {user?.role === 'admin' ? <ShieldCheck className="h-2.5 w-2.5" /> : <UserCheck className="h-2.5 w-2.5" />}
                           Modo: {user?.role === 'admin' ? 'Administrador' : user?.role === 'seller' ? 'Vendedor' : 'Leitor'}
@@ -207,7 +207,7 @@ export default function Navbar() {
                     <Link
                       to="/dashboard"
                       onClick={() => setIsProfileDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm text-zinc-750 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-850"
+                      className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm text-zinc-800 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900"
                     >
                       <User className="h-4 w-4" /> Painel Geral
                     </Link>
@@ -215,7 +215,7 @@ export default function Navbar() {
                     <Link
                       to="/digital-library"
                       onClick={() => setIsProfileDropdownOpen(false)}
-                      className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm text-zinc-750 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-850"
+                      className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm text-zinc-800 hover:bg-zinc-50 dark:text-zinc-300 dark:hover:bg-zinc-900"
                     >
                       <Library className="h-4 w-4" /> Minha Biblioteca
                     </Link>
@@ -224,13 +224,13 @@ export default function Navbar() {
                       <Link
                         to="/admin"
                         onClick={() => setIsProfileDropdownOpen(false)}
-                        className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold text-emerald-600 hover:bg-zinc-50 dark:text-emerald-450 dark:hover:bg-zinc-850"
+                        className="flex items-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold text-emerald-600 hover:bg-zinc-50 dark:text-emerald-500 dark:hover:bg-zinc-900"
                       >
                         <Settings className="h-4 w-4" /> {user?.role === 'admin' ? 'Console Administrativa' : 'Meu Painel de Vendas'}
                       </Link>
                     )}
 
-                    <div className="border-t border-zinc-100 dark:border-zinc-805 mt-2 pt-2">
+                    <div className="border-t border-zinc-100 dark:border-zinc-800 mt-2 pt-2">
                       <button
                         onClick={handleLogout}
                         className="flex w-full items-center gap-2 rounded-xl px-3.5 py-2 text-left text-sm text-rose-600 hover:bg-rose-50 dark:text-rose-400 dark:hover:bg-rose-950/50 cursor-pointer"
@@ -251,7 +251,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   to="/register"
-                  className="rounded-xl bg-blue-650 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition"
+                  className="rounded-xl bg-blue-700 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition"
                 >
                   Cadastrar
                 </Link>
@@ -271,7 +271,7 @@ export default function Navbar() {
 
       {/* MOBILE PANEL MENU SCREEN OVERLAY */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden border-t border-zinc-150 bg-white/95 px-4 py-6 dark:border-zinc-800 dark:bg-zinc-900 h-screen overflow-y-auto">
+        <div className="lg:hidden border-t border-zinc-200 bg-white/95 px-4 py-6 dark:border-zinc-800 dark:bg-zinc-900 h-screen overflow-y-auto">
           <div className="mb-6 block sm:hidden">
             <SearchBar />
           </div>
@@ -279,7 +279,7 @@ export default function Navbar() {
             <button
               onClick={() => handleNavigationAndClose('/')}
               className={`rounded-xl px-4 py-3 text-left text-base font-semibold ${
-                isActive('/') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-405' : 'text-zinc-650 dark:text-zinc-300'
+                isActive('/') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'
               }`}
             >
               Início
@@ -287,7 +287,7 @@ export default function Navbar() {
             <button
               onClick={() => handleNavigationAndClose('/catalog')}
               className={`rounded-xl px-4 py-3 text-left text-base font-semibold ${
-                isActive('/catalog') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-405' : 'text-zinc-650 dark:text-zinc-300'
+                isActive('/catalog') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400' : 'text-zinc-700 dark:text-zinc-300'
               }`}
             >
               Explorar Loja
@@ -297,7 +297,7 @@ export default function Navbar() {
                 <button
                   onClick={() => handleNavigationAndClose('/digital-library')}
                   className={`rounded-xl px-4 py-3 text-left text-base font-semibold ${
-                    isActive('/digital-library') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-405' : 'text-zinc-655 dark:text-zinc-305'
+                    isActive('/digital-library') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400' : 'text-zinc-650 dark:text-zinc-300'
                   }`}
                 >
                   Biblioteca Digital
@@ -305,7 +305,7 @@ export default function Navbar() {
                 <button
                   onClick={() => handleNavigationAndClose('/dashboard')}
                   className={`rounded-xl px-4 py-3 text-left text-base font-semibold ${
-                    isActive('/dashboard') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-405' : 'text-zinc-655 dark:text-zinc-305'
+                    isActive('/dashboard') ? 'bg-blue-50 text-blue-600 dark:bg-zinc-800 dark:text-blue-400' : 'text-zinc-650 dark:text-zinc-300'
                   }`}
                 >
                   Minha Conta
@@ -314,7 +314,7 @@ export default function Navbar() {
                   <button
                     onClick={() => handleNavigationAndClose('/admin')}
                     className={`rounded-xl px-4 py-3 text-left text-base font-semibold flex items-center gap-2 ${
-                      isActive('/admin') ? 'bg-blue-50 text-blue-650 dark:bg-zinc-800' : 'text-zinc-650 dark:text-zinc-300'
+                      isActive('/admin') ? 'bg-blue-50 text-blue-700 dark:bg-zinc-800' : 'text-zinc-700 dark:text-zinc-300'
                     }`}
                   >
                     <Settings className="h-5 w-5 text-emerald-500 animate-spin-slow" /> {user?.role === 'admin' ? 'Console Admin' : 'Painel de Vendas'}
@@ -330,7 +330,7 @@ export default function Navbar() {
                   </div>
                   <button
                     onClick={handleLogout}
-                    className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-left text-sm font-semibold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-955/20"
+                    className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-left text-sm font-semibold text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/20"
                   >
                     <LogOut className="h-5 w-5 animate-pulse" /> Sair da Conta
                   </button>

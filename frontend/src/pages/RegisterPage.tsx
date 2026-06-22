@@ -72,7 +72,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[85vh] grid grid-cols-1 md:grid-cols-12 rounded-3xl overflow-hidden border border-zinc-150 dark:border-zinc-805 bg-white dark:bg-zinc-950 shadow-xl" id="bookverse-register-form">
+    <div className="min-h-[85vh] grid grid-cols-1 md:grid-cols-12 rounded-3xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shadow-xl" id="bookverse-register-form">
       
       {/* Visual background page split */}
       <div className="hidden md:flex md:col-span-5 relative bg-gradient-to-br from-blue-700 via-indigo-900 to-amber-950 p-8 flex-col justify-between text-white text-left select-none">
@@ -80,13 +80,13 @@ export default function RegisterPage() {
         <div className="absolute top-0 bottom-0 left-3.5 w-[0.5px] bg-white/5" />
         
         <div className="flex items-center gap-2">
-          <BookOpen className="h-6 w-6 text-amber-405" />
+          <BookOpen className="h-6 w-6 text-amber-400" />
           <span className="font-bold text-sm tracking-widest font-mono uppercase">Livraria Mulemba</span>
         </div>
 
         <div className="my-auto space-y-4">
           <h2 className="text-3xl font-black font-sans leading-tight">Conectando a Rede Literária</h2>
-          <p className="text-xs text-zinc-355 leading-relaxed">
+          <p className="text-xs text-zinc-350 leading-relaxed">
             A plataforma definitiva para conectar leitores, sebos locais, livrarias físicas, autores independentes e editoras parceiras de todo o país. Anuncie livros usados na hora, impulsione suas vendas ou auto-publique no formato digital com royalties diretos.
           </p>
           <div className="grid grid-cols-2 gap-2 text-[10px] font-mono border-t border-white/10 pt-4 mt-2">
@@ -118,8 +118,8 @@ export default function RegisterPage() {
       <div className="md:col-span-7 p-6 sm:p-12 flex flex-col justify-center bg-white dark:bg-zinc-900 scrollbar-thin">
         <div className="max-w-md w-full mx-auto space-y-5">
           <div className="text-left">
-            <h1 className="text-3xl font-extrabold text-zinc-901 dark:text-zinc-50 font-sans">Faça Parte da Rede</h1>
-            <p className="text-xs text-zinc-401 mt-1">Escolha o tipo de perfil ideal para começar a usar a plataforma.</p>
+            <h1 className="text-3xl font-extrabold text-zinc-900 dark:text-zinc-50 font-sans">Faça Parte da Rede</h1>
+            <p className="text-xs text-zinc-400 mt-1">Escolha o tipo de perfil ideal para começar a usar a plataforma.</p>
           </div>
 
           <form onSubmit={handleRegister} className="space-y-4">
@@ -134,7 +134,7 @@ export default function RegisterPage() {
                   className={`flex flex-col items-start p-3 rounded-xl border text-left cursor-pointer transition-all ${
                     userType === 'reader'
                       ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:border-blue-500'
-                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-650 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
+                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-700 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
                   }`}
                 >
                   <UserCheck className="h-5 w-5 mb-1.5 text-blue-500" />
@@ -150,7 +150,7 @@ export default function RegisterPage() {
                   className={`flex flex-col items-start p-3 rounded-xl border text-left cursor-pointer transition-all ${
                     userType === 'publisher'
                       ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:border-blue-500'
-                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-650 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
+                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-700 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
                   }`}
                 >
                   <BookOpen className="h-5 w-5 mb-1.5 text-blue-500" />
@@ -164,7 +164,7 @@ export default function RegisterPage() {
                   className={`flex flex-col items-start p-3 rounded-xl border text-left cursor-pointer transition-all ${
                     userType === 'author'
                       ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:border-blue-500'
-                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-650 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
+                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-700 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
                   }`}
                 >
                   <BookHeart className="h-5 w-5 mb-1.5 text-blue-500" />
@@ -177,7 +177,7 @@ export default function RegisterPage() {
                   className={`flex flex-col items-start p-3 rounded-xl border text-left cursor-pointer transition-all ${
                     userType === 'reader_seller'
                       ? 'border-blue-600 bg-blue-50/20 text-blue-600 dark:border-blue-500'
-                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-650 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
+                      : 'border-zinc-200 hover:border-zinc-300 text-zinc-700 bg-white dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-300'
                   }`}
                 >
                   <Store className="h-5 w-5 mb-1.5 text-blue-500" />
@@ -189,7 +189,7 @@ export default function RegisterPage() {
 
             {/* CONDITIONAL EXTRA BUSINESS FIELDS */}
             {(userType === 'bookstore' || userType === 'publisher') && (
-              <div className="space-y-3 p-3.5 bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-150 dark:border-zinc-805 animate-fade-in">
+              <div className="space-y-3 p-3.5 bg-zinc-50 dark:bg-zinc-950 rounded-2xl border border-zinc-200 dark:border-zinc-800 animate-fade-in">
                 <span className="text-[10px] text-zinc-400 font-bold font-mono uppercase block">Dados Empresariais</span>
                 <div>
                   <label className="text-[10px] text-zinc-500 font-bold font-mono uppercase block mb-1">Nome da Empresa / Selo Editorial *</label>
@@ -199,7 +199,7 @@ export default function RegisterPage() {
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     placeholder={userType === 'bookstore' ? 'Livraria da Vila Ltda.' : 'Editora Sextante'}
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-900 dark:text-zinc-100"
                   />
                 </div>
               </div>
@@ -215,9 +215,9 @@ export default function RegisterPage() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Arthur Dent"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
-                  <User className="absolute left-3 h-4 w-4 text-zinc-350" />
+                  <User className="absolute left-3 h-4 w-4 text-zinc-400" />
                 </div>
               </div>
 
@@ -230,9 +230,9 @@ export default function RegisterPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="arthur@galaxy.com"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
-                  <Mail className="absolute left-3 h-4 w-4 text-zinc-350" />
+                  <Mail className="absolute left-3 h-4 w-4 text-zinc-400" />
                 </div>
               </div>
             </div>
@@ -247,9 +247,9 @@ export default function RegisterPage() {
                     value={city}
                     onChange={(e) => setCity(e.target.value)}
                     placeholder="Luanda"
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
-                  <MapPin className="absolute left-3 h-4 w-4 text-zinc-350" />
+                  <MapPin className="absolute left-3 h-4 w-4 text-zinc-400" />
                 </div>
               </div>
 
@@ -261,7 +261,7 @@ export default function RegisterPage() {
                   value={state}
                   onChange={(e) => setState(e.target.value.toUpperCase())}
                   placeholder="LUA"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 text-center text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 text-center text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
               </div>
             </div>
@@ -274,9 +274,9 @@ export default function RegisterPage() {
                   value={whatsapp}
                   onChange={(e) => setWhatsapp(e.target.value)}
                   placeholder="+244 923 456 789"
-                  className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                  className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                 />
-                <MessageSquare className="absolute left-3 h-4 w-4 text-zinc-350" />
+                <MessageSquare className="absolute left-3 h-4 w-4 text-zinc-400" />
               </div>
             </div>
 
@@ -291,9 +291,9 @@ export default function RegisterPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Mínimo de 8 caracteres..."
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
-                  <Key className="absolute left-3 h-4 w-4 text-zinc-350" />
+                  <Key className="absolute left-3 h-4 w-4 text-zinc-400" />
                 </div>
               </div>
 
@@ -307,9 +307,9 @@ export default function RegisterPage() {
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     placeholder="Repita a senha..."
-                    className="w-full rounded-xl border border-zinc-250 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-605 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
+                    className="w-full rounded-xl border border-zinc-300 bg-white px-3 py-2 pl-9 text-xs text-zinc-900 outline-none focus:border-blue-600 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-100"
                   />
-                  <Key className="absolute left-3 h-4 w-4 text-zinc-350" />
+                  <Key className="absolute left-3 h-4 w-4 text-zinc-400" />
                 </div>
               </div>
             </div>
@@ -324,7 +324,7 @@ export default function RegisterPage() {
 
           <p className="text-center text-xs text-zinc-500">
             Já possui cadastro na Livraria Mulemba?{' '}
-            <Link to="/login" className="text-blue-605 font-bold hover:underline">
+            <Link to="/login" className="text-blue-600 font-bold hover:underline">
               Ir para o Login
             </Link>
           </p>

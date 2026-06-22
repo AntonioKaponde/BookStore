@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import { CartItem, Book } from '../types';
 import { couponService } from '../services/bookService';
+import { analyticsService } from '../services/analyticsService';
 
 interface CartState {
   items: CartItem[];
@@ -28,6 +29,12 @@ export const useCartStore = create<CartState>((set, get) => ({
   discount: 0,
 
   addItem: (book, format) => {
+    analyticsService.trackEvent({
+      eventType: 'ADD_TO_CART',
+      pageUrl: window.location.pathname,
+      additionalData: JSON.stringify({ bookId: book.id, title: book.title, format }),
+    });
+
     set((state) => {
       const existingIndex = state.items.findIndex(
         (item) => item.bookId === book.id && item.selectedFormat === format

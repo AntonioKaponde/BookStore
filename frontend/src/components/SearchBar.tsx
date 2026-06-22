@@ -76,13 +76,13 @@ export default function SearchBar() {
           }}
           onFocus={() => setIsOpen(true)}
           placeholder="Search by title, author, category or ISBN..."
-          className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 py-2.5 pl-11 pr-10 text-sm text-zinc-900 shadow-inner outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-105/20 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:focus:border-blue-500"
+          className="w-full rounded-2xl border border-zinc-200 bg-zinc-50 py-2.5 pl-11 pr-10 text-sm text-zinc-900 shadow-inner outline-none transition-all focus:border-blue-600 focus:bg-white focus:ring-2 focus:ring-blue-100/20 dark:border-zinc-800 dark:bg-zinc-950 dark:text-zinc-50 dark:focus:border-blue-500"
         />
         {query && (
           <button
             type="button"
             onClick={handleClear}
-            className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-zinc-400 hover:text-zinc-650 dark:hover:text-zinc-200"
+            className="absolute inset-y-0 right-0 flex items-center pr-3.5 text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
           >
             <X className="h-4 w-4" />
           </button>
@@ -101,7 +101,7 @@ export default function SearchBar() {
               <button
                 key={book.id}
                 onClick={() => handleSuggestClick(book.id)}
-                className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-zinc-50 dark:hover:bg-zinc-850 transition-colors"
+                className="flex w-full items-center gap-3 rounded-lg px-3 py-2 text-left hover:bg-zinc-50 dark:hover:bg-zinc-900 transition-colors"
               >
                 {book.coverImage ? (
                   <img src={book.coverImage} alt={book.title} className="h-10 w-8.5 rounded object-cover flex-shrink-0 shadow-sm border border-zinc-200 dark:border-zinc-800" />
@@ -115,7 +115,7 @@ export default function SearchBar() {
                   <h4 className="truncate text-sm font-semibold text-zinc-900 dark:text-zinc-100 leading-tight">
                     {book.title}
                   </h4>
-                  <p className="truncate text-xs text-zinc-500 dark:text-zinc-450 mt-0.5">
+                  <p className="truncate text-xs text-zinc-500 dark:text-zinc-500 mt-0.5">
                     by {author ? author.name : 'Unknown Author'}
                   </p>
                 </div>
